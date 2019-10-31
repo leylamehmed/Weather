@@ -12,8 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LMCityTableViewCell : UITableViewCell
 
-// now only showing one label, you can add more yourself
-@property (nonatomic, strong) UILabel *descriptionLabel;
+@property (nonatomic, strong) NSString *cityName; // Name of the location
+@property (nonatomic, strong) NSString *parentName; // Name of the parent location
+@property (nonatomic, strong) NSString *imageFile; // image filename of weather
+
 
 @end
 

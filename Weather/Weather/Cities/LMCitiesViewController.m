@@ -8,13 +8,12 @@
 
 #import "LMCitiesViewController.h"
 #import "LMCityTableViewCell.h"
+#import "LMWeatherData.h"
+#import "LMWeather.h"
 
 @interface LMCitiesViewController ()
-{
-    UITableView *tableView;
-    NSArray *arr;
-}
 
+@property LMWeatherData *weatherData;
 @end
 
 @implementation LMCitiesViewController
@@ -23,18 +22,43 @@
     [super viewDidLoad];
     
     // init table view
-    tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    tableView.contentInset = UIEdgeInsetsMake(44,0,0,0);
-
-    // must set delegate & dataSource, otherwise the the table will be empty and not responsive
-    tableView.delegate = self;
-    tableView.dataSource = self;
+    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    _tableView.contentInset = UIEdgeInsetsMake(44,0,0,0);
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
     
-    //  tableView.backgroundColor = [UIColor cyanColor];
-    arr=[[NSArray alloc]initWithObjects:@"ABC",@"XYZ", nil];
+    _weatherData     = [LMWeatherData sharedInstance];
+    _woeidsArray     = _weatherData.woeids;
+ 
+    for (NSString *woeid in _woeidsArray) {
+        
+        [_weatherData fetchWoeidDataForWoeid:woeid withCompletionBlock:^(NSMutableDictionary *woeidsDict, NSError *completionBlockError) {
+            if (!completionBlockError) {
+                
+                //Check if all data are fetched
+                if ((int)[self->_weatherData woeidDatasArray].count == (int) self->_woeidsArray.count ) {
+                    
+                    self->_woidsData = [NSMutableArray arrayWithArray:[self->_weatherData woeidDatasArray]];
 
-    // add to canvas
-    [self.view addSubview:tableView];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        // add tableview
+                        [self.view addSubview:self->_tableView];
+                        
+                    });
+                }
+                
+            }
+            else
+            {
+                NSLog(@"ERROR  %@ ", completionBlockError.description);
+
+            }
+        
+
+        }];
+        
+    }
+ 
 }
 
 #pragma mark - UITableViewDataSource
@@ -48,7 +72,7 @@
 // number of row in the section
 - (NSInteger)tableView:(UITableView *)theTableView numberOfRowsInSection:(NSInteger)section
 {
-    return arr.count;
+    return [_weatherData woeidDatasArray].count;
 
 }
 
@@ -61,8 +85,13 @@
     if (cell == nil) {
         cell = [[LMCityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.descriptionLabel.text = [arr objectAtIndex:indexPath.row];
+    
+  //  NSString *name = dict [@"title"];
+    NSDictionary *dict = [_woidsData objectAtIndex:indexPath.row];
+    NSLog(@"DICT_LM  %@ ", dict);
 
+//    cell.descriptionLabel.text = [[_weatherData woeidDatasArray] objectAtIndex:indexPath.row];
+    cell.descriptionLabel.text = dict[@"title"];;
     return cell;
 }
 
@@ -74,140 +103,3 @@
 }
 
 @end
-
-    // Do any additional setup after loading the view.
-    
-//    self.view.backgroundColor = [UIColor blueColor];
-//    _citiesTable.backgroundColor = [UIColor blueColor];
-//
-//
-//    names = [[NSArray alloc]initWithObjects:@"Sofia",@"New York",@"Tokyo",
-//            nil];
-//    images = [[NSArray
-//               alloc]initWithObjects:@"mobilestitle.jpg",@"costumetitle.jpeg",
-//              @"shoestitle.png",nil];
-    
-    
-//
-//}
-//
-//- (void)didReceiveMemoryWarning {
-//    [super didReceiveMemoryWarning];
-//    // Dispose of any resources that can be recreated.
-//}
-//#pragma mark - UITableView
-//-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    return 1;
-//}
-//
-//-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:
-//(NSInteger)section
-//{
-//    return 3;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView
-//         cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//
-//
-//    static NSString *cellId = @"tableview";
-//
-//    LMCityTableViewCell  *cell =[tableView dequeueReusableCellWithIdentifier:cellId];
-//
-//
-//    cell.cellTxt .text = [name objectAtIndex:indexPath.row];
-//
-//    cell.cellImg.image = [UIImage imageNamed:[images
-//                                              objectAtIndex:indexPath.row]];
-//
-//    return cell;
-//
-//
-//
-//}
-//
-//
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:
-//(NSIndexPath *)indexPath
-//{
-//    selectindex = indexPath.row;
-//    [self performSegueWithIdentifier:@"second" sender:self];
-//}
-//
-//
-//
-//#pragma mark - Navigation
-//
-//// In a storyboard-based application, you will often want to do a little
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//
-//  //  if ([segue.identifier isEqualToString:@"second"])
-//
-////    {
-////        CollectionViewController *obj = segue.destinationViewController;
-////        obj.receivename = [name objectAtIndex:selectindex];
-////
-////    }
-////
-//
-//
-//    // Get the new view controller using [segue destinationViewController].
-//    // Pass the selected object to the new view controller.
-//
-//}
-//
-////- (void)viewDidLoad
-////{
-////    [super viewDidLoad];
-////    // init table view
-//// UITableView*   tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-////
-////    // must set delegate & dataSource, otherwise the the table will be empty and not responsive
-////    tableView.delegate = self;
-////    tableView.dataSource = self;
-////
-////    tableView.backgroundColor = [UIColor cyanColor];
-////
-////    // add to canvas
-////    [self.view addSubview:tableView];
-////}
-////
-////#pragma mark - UITableViewDataSource
-////// number of section(s), now I assume there is only 1 section
-////- (NSInteger)numberOfSectionsInTableView:(UITableView *)theTableView
-////{
-////    return 1;
-////}
-////
-////// number of row in the section, I assume there is only 1 row
-////- (NSInteger)tableView:(UITableView *)theTableView numberOfRowsInSection:(NSInteger)section
-////{
-////    return 1;
-////}
-////
-////// the cell will be returned to the tableView
-////- (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-////{
-////    static NSString *cellIdentifier = @"HistoryCell";
-////
-////    // Similar to UITableViewCell, but
-////    JSCustomCell *cell = (JSCustomCell *)[theTableView dequeueReusableCellWithIdentifier:cellIdentifier];
-////    if (cell == nil) {
-////        cell = [[JSCustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-////    }
-////    // Just want to test, so I hardcode the data
-////    cell.descriptionLabel.text = @"Testing";
-////
-////    return cell;
-////}
-////
-////#pragma mark - UITableViewDelegate
-////// when user tap the row, what action you want to perform
-////- (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-////{
-////    NSLog(@"selected %d row", indexPath.row);
-////}
-
-

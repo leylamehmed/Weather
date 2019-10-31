@@ -27,7 +27,7 @@
 - (id)init {
     self = [super init];
     if (self) {
-  
+        
     }
     return self;
 }
@@ -45,14 +45,12 @@
 
 -(void) setNavigationBar {
     NSLog(@"LM setNavigationBar");
-    
-    
-    
+
     _navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, UIApplication.sharedApplication.statusBarFrame.size.height, self.view.frame.size.width, 50)];
-//    self.navigationItem.title = @"The title";
-//    UIBarButtonItem *exampleButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"button.png"] style:UIBarButtonItemStylePlain target:self action:@selector(btnClicked:)];
-//
-//    [self.view addSubview:_navBar];
+    //    self.navigationItem.title = @"The title";
+    //    UIBarButtonItem *exampleButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"button.png"] style:UIBarButtonItemStylePlain target:self action:@selector(btnClicked:)];
+    //
+    //    [self.view addSubview:_navBar];
     
     
     UINavigationItem* navItem = [[UINavigationItem alloc] initWithTitle:@"TITLE"];
@@ -60,40 +58,40 @@
     UIBarButtonItem* leftBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(onTapLeftButton:)];
     navItem.leftBarButtonItem = leftBarButton;
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]
-                                   initWithTitle:@"Add"
-                                   style:UIBarButtonItemStylePlain
-                                   target:self
+                                       initWithTitle:@"Add"
+                                       style:UIBarButtonItemStylePlain
+                                       target:self
                                        action:@selector(onTapRigtButton:)];
-
-//    UIBarButtonItem* rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(onTapRigtButton:)];
+    
+    //    UIBarButtonItem* rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(onTapRigtButton:)];
     navItem.rightBarButtonItem = rightBarButton;
     
     [_navBar setItems:@[navItem]];
     [self.view addSubview:_navBar];
-
-  //  [LMMainViewController didMoveToParentViewController:self];
-
+    
+    //  [LMMainViewController didMoveToParentViewController:self];
+    
     
 }
 
 -(void) setTabBar {
     
     LMTabBarViewController *tabBarController = [[LMTabBarViewController alloc] init];
-  //  [tabBarController.view removeFromSuperview];
-//    [tabBarController willMoveToParentViewController:self];
-
+    //  [tabBarController.view removeFromSuperview];
+    //    [tabBarController willMoveToParentViewController:self];
+    
     [self.view addSubview:tabBarController.view];
-
+    
     [self addChildViewController:tabBarController];
-
+    
 }
 -(void) add {
     NSLog(@"LM Add ");
-
+    
 }
 -(void) onTapRigtButton:(id)sender {
     NSLog(@"LM onTapRigtButton ");
-
+    
 }
 -(void) onTapLeftButton:(UIBarButtonItem*)item{
     NSLog(@"LM onTapLeftButton ");

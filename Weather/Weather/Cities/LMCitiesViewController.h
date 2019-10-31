@@ -12,7 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LMCitiesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-//@property (strong, nonatomic) IBOutlet UITableView *citiesTable;
+@property (strong, nonatomic) NSMutableArray *woeidsArray;
+@property (strong, nonatomic) NSMutableArray *woidsData;
+@property (strong, nonatomic) UITableView *tableView;
 
 @end
 
