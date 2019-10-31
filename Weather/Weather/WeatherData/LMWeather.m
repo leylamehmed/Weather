@@ -10,7 +10,7 @@
 
 @implementation LMWeather
 
-@synthesize cityName;
-@synthesize imageFile;
+//@synthesize cityName;
+//@synthesize imageFile;
 
 @end

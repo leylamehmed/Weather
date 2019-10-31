@@ -7,15 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UILabel+LMLabel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LMCityTableViewCell : UITableViewCell
 
-@property (nonatomic, strong) NSString *cityName; // Name of the location
-@property (nonatomic, strong) NSString *parentName; // Name of the parent location
-@property (nonatomic, strong) NSString *imageFile; // image filename of weather
+@property (nonatomic, strong) UILabel *cityName;// name of city
 
+//@property (nonatomic, strong) NSString *cityName; // name of city
+//@property (nonatomic, strong) NSString *imageFile; // image filename of weather
+//
 
 @end
 

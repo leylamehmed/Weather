@@ -10,31 +10,20 @@
 
 @implementation LMCityTableViewCell
 
-@synthesize descriptionLabel = _descriptionLabel;
+@synthesize cityName = _cityName;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // configure control(s)
-        self.descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 10, 300, 30)];
-//        self.descriptionLabel.textColor = [UIColor blackColor];
-//        self.descriptionLabel.font = [UIFont fontWithName:@"Arial" size:12.0f];
-        
-        [self addSubview:self.descriptionLabel];
+        CGRect rect = CGRectMake(5, 10, 300, 30);
+        self.cityName = [UILabel customInitWithCGRect:rect];
+//        self.cityName.font = [UIFont fontWithName:@"Arial" size:15.0f];
+//        self.cityName.textColor = [UIColor redColor];
+
+        [self addSubview:self.cityName];
     }
     return self;
 }
-
-//- (void)awakeFromNib {
-//    [super awakeFromNib];
-//    // Initialization code
-//}
-//
-//- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-//    [super setSelected:selected animated:animated];
-//
-//    // Configure the view for the selected state
-//}
 
 @end

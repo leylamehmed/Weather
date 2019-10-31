@@ -10,6 +10,7 @@
 #import "LMFavoritesViewController.h"
 #import "LMSettingsViewController.h"
 #import "LMCitiesViewController.h"
+#import "UIColor+LMColor.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +21,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+
+    //change status bar color 
+    UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
+    
+    if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
+        statusBar.backgroundColor = [UIColor colorFromHexString:@"#c0d9f2"];
+        
+    }
+
     return YES;
 }
 

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		CF08CFE52369CB5E00CBDECE /* LMWeatherData.m in Sources */ = {isa = PBXBuildFile; fileRef = CF08CFE42369CB5E00CBDECE /* LMWeatherData.m */; };
 		CF08CFE8236AFF3900CBDECE /* LMWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = CF08CFE7236AFF3900CBDECE /* LMWeather.m */; };
+		CF08CFEC236B22F100CBDECE /* UILabel+LMLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF08CFEB236B22F100CBDECE /* UILabel+LMLabel.m */; };
+		CF08CFEF236B269B00CBDECE /* UIFont+LMSystemFontOverride.m in Sources */ = {isa = PBXBuildFile; fileRef = CF08CFEE236B269B00CBDECE /* UIFont+LMSystemFontOverride.m */; };
+		CF08CFF2236B2A5B00CBDECE /* UIColor+LMColor.m in Sources */ = {isa = PBXBuildFile; fileRef = CF08CFF1236B2A5B00CBDECE /* UIColor+LMColor.m */; };
 		CF583A2E236883C3007576E9 /* LMCityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF583A2D236883C3007576E9 /* LMCityTableViewCell.m */; };
 		CF7844D72366FB61008D6225 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7844D62366FB61008D6225 /* AppDelegate.m */; };
 		CF7844DD2366FB61008D6225 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF7844DB2366FB61008D6225 /* Main.storyboard */; };
@@ -46,6 +49,12 @@
 		CF08CFE42369CB5E00CBDECE /* LMWeatherData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMWeatherData.m; sourceTree = "<group>"; };
 		CF08CFE6236AFF3900CBDECE /* LMWeather.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMWeather.h; sourceTree = "<group>"; };
 		CF08CFE7236AFF3900CBDECE /* LMWeather.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMWeather.m; sourceTree = "<group>"; };
+		CF08CFEA236B22F100CBDECE /* UILabel+LMLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+LMLabel.h"; sourceTree = "<group>"; };
+		CF08CFEB236B22F100CBDECE /* UILabel+LMLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+LMLabel.m"; sourceTree = "<group>"; };
+		CF08CFED236B269B00CBDECE /* UIFont+LMSystemFontOverride.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+LMSystemFontOverride.h"; sourceTree = "<group>"; };
+		CF08CFEE236B269B00CBDECE /* UIFont+LMSystemFontOverride.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+LMSystemFontOverride.m"; sourceTree = "<group>"; };
+		CF08CFF0236B2A5B00CBDECE /* UIColor+LMColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+LMColor.h"; sourceTree = "<group>"; };
+		CF08CFF1236B2A5B00CBDECE /* UIColor+LMColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LMColor.m"; sourceTree = "<group>"; };
 		CF583A2C236883C3007576E9 /* LMCityTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMCityTableViewCell.h; sourceTree = "<group>"; };
 		CF583A2D236883C3007576E9 /* LMCityTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMCityTableViewCell.m; sourceTree = "<group>"; };
 		CF7844D22366FB61008D6225 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +119,19 @@
 			path = WeatherData;
 			sourceTree = "<group>";
 		};
+		CF08CFE9236B228B00CBDECE /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				CF08CFEA236B22F100CBDECE /* UILabel+LMLabel.h */,
+				CF08CFEB236B22F100CBDECE /* UILabel+LMLabel.m */,
+				CF08CFED236B269B00CBDECE /* UIFont+LMSystemFontOverride.h */,
+				CF08CFEE236B269B00CBDECE /* UIFont+LMSystemFontOverride.m */,
+				CF08CFF0236B2A5B00CBDECE /* UIColor+LMColor.h */,
+				CF08CFF1236B2A5B00CBDECE /* UIColor+LMColor.m */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
 		CF7844C92366FB61008D6225 = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +155,7 @@
 		CF7844D42366FB61008D6225 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				CF08CFE9236B228B00CBDECE /* Additions */,
 				CF08CFE22369CB3700CBDECE /* WeatherData */,
 				CF7844D52366FB61008D6225 /* AppDelegate.h */,
 				CF7844D62366FB61008D6225 /* AppDelegate.m */,
@@ -338,7 +361,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF78452623670744008D6225 /* LMCitiesViewController.m in Sources */,
+				CF08CFEF236B269B00CBDECE /* UIFont+LMSystemFontOverride.m in Sources */,
 				CF7844E52366FB63008D6225 /* main.m in Sources */,
+				CF08CFEC236B22F100CBDECE /* UILabel+LMLabel.m in Sources */,
 				CF78452923671565008D6225 /* LMTabBarViewController.m in Sources */,
 				CF7845212367055C008D6225 /* LMSettingsViewController.m in Sources */,
 				CF78451E23670549008D6225 /* LMFavoritesViewController.m in Sources */,
@@ -347,6 +372,7 @@
 				CF7844D72366FB61008D6225 /* AppDelegate.m in Sources */,
 				CF7845182366FEC7008D6225 /* LMMainViewController.m in Sources */,
 				CF08CFE8236AFF3900CBDECE /* LMWeather.m in Sources */,
+				CF08CFF2236B2A5B00CBDECE /* UIColor+LMColor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

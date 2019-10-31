@@ -10,6 +10,7 @@
 #import "LMFavoritesViewController.h"
 #import "LMSettingsViewController.h"
 #import "LMCitiesViewController.h"
+#import "UIFont+LMSystemFontOverride.h"
 
 @interface LMTabBarViewController ()
 
@@ -42,7 +43,9 @@
     
         LMSettingsViewController *settingsViewController = [[LMSettingsViewController alloc] init];
         settingsViewController.tabBarItem.title = @"Settings";
-    
+        [[UITabBarItem appearance] setTitleTextAttributes:@{
+                                                        NSFontAttributeName:[UIFont setFontWithSize:12.0f]
+                                                        } forState:UIControlStateNormal];
     
         [viewControllersArray addObject:favoritesViewController];
         [viewControllersArray addObject:homeViewController];

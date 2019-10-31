@@ -90,8 +90,7 @@
     NSDictionary *dict = [_woidsData objectAtIndex:indexPath.row];
     NSLog(@"DICT_LM  %@ ", dict);
 
-//    cell.descriptionLabel.text = [[_weatherData woeidDatasArray] objectAtIndex:indexPath.row];
-    cell.descriptionLabel.text = dict[@"title"];;
+    cell.cityName.text = dict[@"title"];;
     return cell;
 }
 

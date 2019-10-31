@@ -8,6 +8,9 @@
 
 #import "LMMainViewController.h"
 #import "LMTabBarViewController.h"
+#import "UILabel+LMLabel.h"
+#import "UIColor+LMColor.h"
+#import "UIFont+LMSystemFontOverride.h"
 
 @interface LMMainViewController ()
 
@@ -44,57 +47,36 @@
 }
 
 -(void) setNavigationBar {
-    NSLog(@"LM setNavigationBar");
-
+    
     _navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, UIApplication.sharedApplication.statusBarFrame.size.height, self.view.frame.size.width, 50)];
-    //    self.navigationItem.title = @"The title";
-    //    UIBarButtonItem *exampleButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"button.png"] style:UIBarButtonItemStylePlain target:self action:@selector(btnClicked:)];
-    //
-    //    [self.view addSubview:_navBar];
+    _navBar.barTintColor = [UIColor colorFromHexString:@"#c0d9f2"];
+    _navBar.translucent=false;
+
+    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@"Weather"];
+  
+    [_navBar setTitleTextAttributes:
+     @{NSForegroundColorAttributeName:[UIColor getProjectColor],
+       NSFontAttributeName:[UIFont setFontWithSize:17.0f]}];
     
-    
-    UINavigationItem* navItem = [[UINavigationItem alloc] initWithTitle:@"TITLE"];
-    // [navbar setBarTintColor:[UIColor lightGrayColor]];
-    UIBarButtonItem* leftBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(onTapLeftButton:)];
-    navItem.leftBarButtonItem = leftBarButton;
-    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc]
-                                       initWithTitle:@"Add"
-                                       style:UIBarButtonItemStylePlain
-                                       target:self
-                                       action:@selector(onTapRigtButton:)];
-    
-    //    UIBarButtonItem* rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(onTapRigtButton:)];
+    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onTapAddButton:)];
     navItem.rightBarButtonItem = rightBarButton;
-    
+
+   
     [_navBar setItems:@[navItem]];
     [self.view addSubview:_navBar];
-    
-    //  [LMMainViewController didMoveToParentViewController:self];
-    
     
 }
 
 -(void) setTabBar {
     
     LMTabBarViewController *tabBarController = [[LMTabBarViewController alloc] init];
-    //  [tabBarController.view removeFromSuperview];
-    //    [tabBarController willMoveToParentViewController:self];
-    
     [self.view addSubview:tabBarController.view];
     
     [self addChildViewController:tabBarController];
     
 }
--(void) add {
-    NSLog(@"LM Add ");
-    
-}
--(void) onTapRigtButton:(id)sender {
+
+-(void) onTapAddButton:(id)sender {
     NSLog(@"LM onTapRigtButton ");
-    
-}
--(void) onTapLeftButton:(UIBarButtonItem*)item{
-    NSLog(@"LM onTapLeftButton ");
-    
 }
 @end
