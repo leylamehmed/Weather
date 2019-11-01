@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSMutableArray *woeids;
 @property (strong, nonatomic) NSMutableDictionary *woeidsDict;
 @property (strong, nonatomic) NSMutableArray *woeidDatasArray;
+@property (nonatomic) BOOL isDataFetched;
 
 -(void) fetchWoeidDataForWoeid:(NSString *)woeid withCompletionBlock:(void (^)(NSMutableDictionary * _Nonnull woeidsDict , NSError * _Nonnull completionBlockError)) completionBlock;
 @end

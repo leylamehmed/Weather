@@ -10,7 +10,7 @@
 #define API_URL @"https://www.metaweather.com/api"
 
 @implementation LMWeatherData
-
+@synthesize isDataFetched;
 + (LMWeatherData *)sharedInstance {
     static dispatch_once_t onceToken;
     static LMWeatherData *instance = nil;
@@ -32,7 +32,7 @@
         self.woeids = [[NSMutableArray alloc] initWithObjects:@"839722",@"2459115",@"1118370",nil];
         self.woeidsDict = [[NSMutableDictionary alloc] init];
         self.woeidDatasArray = [[NSMutableArray alloc] init];
-        
+        self.isDataFetched = false;
     }
     return self;
 }

@@ -39,6 +39,7 @@
     
         LMCitiesViewController *homeViewController = [[LMCitiesViewController alloc] init];
         homeViewController.tabBarItem.title = @"Home";
+    
         //    favoritesViewController.tabBarItem.image=[UIImage];
     
         LMSettingsViewController *settingsViewController = [[LMSettingsViewController alloc] init];
