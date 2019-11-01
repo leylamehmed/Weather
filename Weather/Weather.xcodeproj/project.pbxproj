@@ -12,6 +12,7 @@
 		CF08CFEC236B22F100CBDECE /* UILabel+LMLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF08CFEB236B22F100CBDECE /* UILabel+LMLabel.m */; };
 		CF08CFEF236B269B00CBDECE /* UIFont+LMSystemFontOverride.m in Sources */ = {isa = PBXBuildFile; fileRef = CF08CFEE236B269B00CBDECE /* UIFont+LMSystemFontOverride.m */; };
 		CF08CFF2236B2A5B00CBDECE /* UIColor+LMColor.m in Sources */ = {isa = PBXBuildFile; fileRef = CF08CFF1236B2A5B00CBDECE /* UIColor+LMColor.m */; };
+		CF08CFF8236C3AEA00CBDECE /* LMCustomCityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF08CFF7236C3AEA00CBDECE /* LMCustomCityCell.xib */; };
 		CF583A2E236883C3007576E9 /* LMCityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF583A2D236883C3007576E9 /* LMCityTableViewCell.m */; };
 		CF7844D72366FB61008D6225 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7844D62366FB61008D6225 /* AppDelegate.m */; };
 		CF7844DD2366FB61008D6225 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF7844DB2366FB61008D6225 /* Main.storyboard */; };
@@ -55,6 +56,7 @@
 		CF08CFEE236B269B00CBDECE /* UIFont+LMSystemFontOverride.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+LMSystemFontOverride.m"; sourceTree = "<group>"; };
 		CF08CFF0236B2A5B00CBDECE /* UIColor+LMColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+LMColor.h"; sourceTree = "<group>"; };
 		CF08CFF1236B2A5B00CBDECE /* UIColor+LMColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LMColor.m"; sourceTree = "<group>"; };
+		CF08CFF7236C3AEA00CBDECE /* LMCustomCityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMCustomCityCell.xib; sourceTree = "<group>"; };
 		CF583A2C236883C3007576E9 /* LMCityTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMCityTableViewCell.h; sourceTree = "<group>"; };
 		CF583A2D236883C3007576E9 /* LMCityTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMCityTableViewCell.m; sourceTree = "<group>"; };
 		CF7844D22366FB61008D6225 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +199,7 @@
 				CF78452523670744008D6225 /* LMCitiesViewController.m */,
 				CF583A2C236883C3007576E9 /* LMCityTableViewCell.h */,
 				CF583A2D236883C3007576E9 /* LMCityTableViewCell.m */,
+				CF08CFF7236C3AEA00CBDECE /* LMCustomCityCell.xib */,
 			);
 			path = Cities;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 			files = (
 				CF7844E22366FB63008D6225 /* LaunchScreen.storyboard in Resources */,
 				CF7844DF2366FB63008D6225 /* Assets.xcassets in Resources */,
+				CF08CFF8236C3AEA00CBDECE /* LMCustomCityCell.xib in Resources */,
 				CF7844DD2366FB61008D6225 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

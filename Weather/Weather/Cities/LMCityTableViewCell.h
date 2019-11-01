@@ -12,6 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LMCityTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *test;
 
 @property (nonatomic, strong) UILabel *cityName;// name of city
 

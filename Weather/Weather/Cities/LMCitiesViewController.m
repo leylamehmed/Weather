@@ -55,18 +55,21 @@
 // the cell will be returned to the tableView
 - (UITableViewCell *)tableView:(UITableView *)theTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"CityCell";
+    static NSString *cellIdentifier = @"cityCell";
     
     LMCityTableViewCell *cell = (LMCityTableViewCell *)[theTableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
-        cell = [[LMCityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    
+    if (!cell) {
+        
+        [_tableView registerNib:[UINib nibWithNibName:@"LMCustomCityCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
+        cell = [_tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     }
     
     // load data from array
     NSDictionary *dict = [_woidsData objectAtIndex:indexPath.row];
     NSLog(@"DICT_LM  %@ ", dict);
-
-    cell.cityName.text = dict[@"title"];;
+cell.test.text = dict[@"title"];
+    //cell.cityName.text = dict[@"title"];;
     return cell;
 }
 
