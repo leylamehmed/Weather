@@ -18,6 +18,13 @@
     
     return label;
 }
-
++ (UILabel*) customInit {
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.font = [UIFont fontWithName:@"Arial" size:14.0f];
+    label.textColor = [UIColor getProjectColor];
+    
+    return label;
+}
 @end
 

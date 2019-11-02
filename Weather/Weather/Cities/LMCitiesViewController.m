@@ -24,13 +24,15 @@
     
     // init table view
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    _tableView.contentInset = UIEdgeInsetsMake(44,0,0,0);
+    _tableView.contentInset = UIEdgeInsetsMake(0,0,0,0);
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    _tableView.translatesAutoresizingMaskIntoConstraints = true;
+    
+    _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
     _weatherData     = [LMWeatherData sharedInstance];
     _woeidsArray     = _weatherData.woeids;
+    _tableView.translatesAutoresizingMaskIntoConstraints = false;
 
     [self addRefreshControl];
     [self fetchData];
@@ -60,17 +62,24 @@
     LMCityTableViewCell *cell = (LMCityTableViewCell *)[theTableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (!cell) {
-        
         [_tableView registerNib:[UINib nibWithNibName:@"LMCustomCityCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
         cell = [_tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     }
     
+    cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+
+    return cell;
+}
+
+
+-(void) tableView:(UITableView *)tableView willDisplayCell:(LMCityTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     // load data from array
     NSDictionary *dict = [_woidsData objectAtIndex:indexPath.row];
-    NSLog(@"DICT_LM  %@ ", dict);
-cell.test.text = dict[@"title"];
-    //cell.cityName.text = dict[@"title"];;
-    return cell;
+
+    cell.cityName.text = dict[@"title"];
+    [cell.cityName sizeToFit];
+
 }
 
 #pragma mark - UITableViewDelegate
@@ -80,17 +89,17 @@ cell.test.text = dict[@"title"];
     NSLog(@"selected %li row", (long)indexPath.row);
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 78;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+}
 
 - (void) fetchData {
     //check isDataLoaded
-    if ([_weatherData isDataFetched]) {
-        NSLog(@"LMDEBUG isDataFetched 1 -- %@ --", [_weatherData isDataFetched] ? @"Yes" : @"No");
-        [self.view addSubview:_tableView];
-    } else {
+//    if ([_weatherData isDataFetched]) {
+//        NSLog(@"LMDEBUG isDataFetched 1 -- %@ --", [_weatherData isDataFetched] ? @"Yes" : @"No");
+//        [self.view addSubview:_tableView];
+//    } else {
         for (NSString *woeid in _woeidsArray) {
             
             [_weatherData fetchWoeidDataForWoeid:woeid withCompletionBlock:^(NSMutableDictionary *woeidsDict, NSError *completionBlockError) {
@@ -122,7 +131,7 @@ cell.test.text = dict[@"title"];
             }];
             
         }
-    }
+  //  }
 }
 - (void) addRefreshControl {
     

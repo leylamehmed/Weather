@@ -53,18 +53,17 @@
         [viewControllersArray addObject:settingsViewController];
     
         self.viewControllers = viewControllersArray;
-        self.view.autoresizingMask=(UIViewAutoresizingFlexibleHeight);
         self.selectedIndex = 1;
     
 
 }
 
-//- (void)didReceiveMemoryWarning
-//{
-//    [super didReceiveMemoryWarning];
-//    // Dispose of any resources that can be recreated.
-//}
-//
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 - (id)init {
     if (self = [super init]) {
         self.delegate = self;
@@ -73,7 +72,6 @@
 }
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
-    NSLog(@"SELECT");
     UILabel* titleLabel = (UILabel*)self.navigationItem.titleView ;
 
     self.navigationItem.rightBarButtonItem = viewController.navigationItem.rightBarButtonItem;

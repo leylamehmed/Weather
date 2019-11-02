@@ -12,9 +12,12 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LMCityTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *test;
+@property (weak, nonatomic) IBOutlet UILabel *cityName;
+@property (weak, nonatomic) IBOutlet UILabel *updatedTime;
+@property (weak, nonatomic) IBOutlet UILabel *maxTemp;
+@property (weak, nonatomic) IBOutlet UILabel *minTemp;
 
-@property (nonatomic, strong) UILabel *cityName;// name of city
+//@property (nonatomic, strong) UILabel *cityName;// name of city
 
 //@property (nonatomic, strong) NSString *cityName; // name of city
 //@property (nonatomic, strong) NSString *imageFile; // image filename of weather

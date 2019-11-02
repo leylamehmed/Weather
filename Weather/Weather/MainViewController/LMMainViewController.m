@@ -38,20 +38,29 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    self.extendedLayoutIncludesOpaqueBars = true;
+    
+
     // Set setTabBar
     [self setTabBar];
     
     //Set navigationBar
     [self setNavigationBar];
-    
+//    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    [self setEdgesForExtendedLayout:UIRectEdgeNone];
+
 }
 
 -(void) setNavigationBar {
-    
+//    UIApplication.sharedApplication.statusBarFrame.size.height
     _navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, UIApplication.sharedApplication.statusBarFrame.size.height, self.view.frame.size.width, 50)];
+    _navBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    [self.parentViewController setNeedsStatusBarAppearanceUpdate];
+//    _navBar.translatesAutoresizingMaskIntoConstraints = false;
+
     _navBar.barTintColor = [UIColor colorFromHexString:@"#c0d9f2"];
     _navBar.translucent=false;
-
+    
     UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@"Weather"];
   
     [_navBar setTitleTextAttributes:
@@ -60,8 +69,8 @@
     
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onTapAddButton:)];
     navItem.rightBarButtonItem = rightBarButton;
+    
 
-   
     [_navBar setItems:@[navItem]];
     [self.view addSubview:_navBar];
     
@@ -71,7 +80,7 @@
     
     LMTabBarViewController *tabBarController = [[LMTabBarViewController alloc] init];
     [self.view addSubview:tabBarController.view];
-    
+
     [self addChildViewController:tabBarController];
     
 }
@@ -79,4 +88,21 @@
 -(void) onTapAddButton:(id)sender {
     NSLog(@"LM onTapRigtButton ");
 }
+
+//- (BOOL)prefersStatusBarHidden
+//{
+//    return UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]);
+//}
+//
+//- (BOOL)prefersStatusBarHidden
+//{
+//    return YES;
+//}
+//
+//- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+//{
+//    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+//
+//}
+
 @end

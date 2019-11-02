@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UILabel (LMLabel)
 + (UILabel *) customInitWithCGRect : (CGRect) rect;
++ (UILabel *) customInit;
 @end
 
 NS_ASSUME_NONNULL_END
