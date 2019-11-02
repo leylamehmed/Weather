@@ -24,11 +24,18 @@
     
     // init table view
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    _tableView.contentInset = UIEdgeInsetsMake(0,0,0,0);
+    _tableView.contentInset = UIEdgeInsetsMake(UIApplication.sharedApplication.statusBarFrame.size.height,0,0,0);
     _tableView.delegate = self;
     _tableView.dataSource = self;
     
    _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    _tableView.autoresizesSubviews = true;
+//    _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//  self.view.autoresizesSubviews = true;
+    if([self.tableView respondsToSelector:@selector(setCellLayoutMarginsFollowReadableWidth:)]) {
+        self.tableView.cellLayoutMarginsFollowReadableWidth = YES;
+    }
+    
 
     _weatherData     = [LMWeatherData sharedInstance];
     _woeidsArray     = _weatherData.woeids;
@@ -64,8 +71,10 @@
         [_tableView registerNib:[UINib nibWithNibName:@"LMCustomCityCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
         cell = [_tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     }
-    
-    cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    cell.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+//    cell.contentView.backgroundColor = [UIColor redColor];
+//    cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+//    cell.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
     return cell;
 }
@@ -95,10 +104,10 @@
 
 - (void) fetchData {
     //check isDataLoaded
-//    if ([_weatherData isDataFetched]) {
-//        NSLog(@"LMDEBUG isDataFetched 1 -- %@ --", [_weatherData isDataFetched] ? @"Yes" : @"No");
-//        [self.view addSubview:_tableView];
-//    } else {
+    if ([_weatherData isDataFetched]) {
+        NSLog(@"LMDEBUG isDataFetched 1 -- %@ --", [_weatherData isDataFetched] ? @"Yes" : @"No");
+        [self.tableView reloadData];
+    } else {
         for (NSString *woeid in _woeidsArray) {
             
             [_weatherData fetchWoeidDataForWoeid:woeid withCompletionBlock:^(NSMutableDictionary *woeidsDict, NSError *completionBlockError) {
@@ -130,7 +139,7 @@
             }];
             
         }
-  //  }
+    }
 }
 - (void) addRefreshControl {
     
