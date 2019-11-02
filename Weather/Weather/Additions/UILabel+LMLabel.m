@@ -14,7 +14,7 @@
 
     UILabel *label = [[UILabel alloc] initWithFrame:rect];
     label.font = [UIFont fontWithName:@"Arial" size:14.0f];
-    label.textColor = [UIColor getProjectColor];
+    label.textColor = [UIColor getProjectColorDarkBlue];
     
     return label;
 }
@@ -22,7 +22,7 @@
     
     UILabel *label = [[UILabel alloc] init];
     label.font = [UIFont fontWithName:@"Arial" size:14.0f];
-    label.textColor = [UIColor getProjectColor];
+    label.textColor = [UIColor getProjectColorDarkBlue];
     
     return label;
 }

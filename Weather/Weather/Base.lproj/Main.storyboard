@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="0.0" green="0.41260761022567749" blue="0.81982827186584473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.15672358870506287" green="0.40486672520637512" blue="0.69963067770004272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="hBx-H2-62K"/>
                     </view>
                 </viewController>
@@ -26,5 +26,5 @@
             </objects>
         </scene>
     </scenes>
-    <color key="tintColor" red="0.0" green="0.41260761022567749" blue="0.81982827186584473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+    <color key="tintColor" red="0.15672358870506287" green="0.40486672520637512" blue="0.69963067770004272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

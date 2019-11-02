@@ -22,11 +22,15 @@
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
 
-+ (UIColor *) getProjectColor {
-    //custom blue color
-    UIColor *projectColor = [self colorFromHexString:@"#106cce"];
++ (UIColor *) getProjectColorDarkBlue {
+    //custom dark blue color - 2867B2
+    UIColor *projectColor = [self colorFromHexString:@"#2867B2"];
     return projectColor;
 }
-
++ (UIColor *) getProjectColorLightBlue {
+    //custom blue color light c0d9f2
+    UIColor *projectColor = [self colorFromHexString:@"#c0d9f2"];
+    return projectColor;
+}
 
 @end

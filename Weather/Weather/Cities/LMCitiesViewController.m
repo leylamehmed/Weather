@@ -28,11 +28,10 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     
-    _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+   _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 
     _weatherData     = [LMWeatherData sharedInstance];
     _woeidsArray     = _weatherData.woeids;
-    _tableView.translatesAutoresizingMaskIntoConstraints = false;
 
     [self addRefreshControl];
     [self fetchData];

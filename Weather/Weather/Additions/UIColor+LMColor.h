@@ -12,7 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UIColor (LMColor)
 + (UIColor *) colorFromHexString:(NSString *)hexString;
-+ (UIColor *) getProjectColor;
++ (UIColor *) getProjectColorDarkBlue;
++ (UIColor *) getProjectColorLightBlue;
 @end
 
 NS_ASSUME_NONNULL_END

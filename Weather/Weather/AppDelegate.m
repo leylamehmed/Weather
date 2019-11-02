@@ -26,7 +26,7 @@
     UIView *statusBar = [[[UIApplication sharedApplication] valueForKey:@"statusBarWindow"] valueForKey:@"statusBar"];
     
     if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
-        statusBar.backgroundColor = [UIColor colorFromHexString:@"#c0d9f2"];
+        statusBar.backgroundColor = [UIColor getProjectColorDarkBlue];
         
     }
 
