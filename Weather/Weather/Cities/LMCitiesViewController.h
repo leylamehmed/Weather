@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSMutableArray *woeidsArray;
 @property (strong, nonatomic) NSMutableArray *woidsData;
 @property (strong, nonatomic) UITableView *tableView;
-
+@property BOOL tableReload;
 @end
 
 NS_ASSUME_NONNULL_END

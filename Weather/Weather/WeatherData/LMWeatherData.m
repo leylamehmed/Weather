@@ -44,14 +44,12 @@
     
     NSURLSessionDataTask *data = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
-        NSError *err = nil;
-        
         if (data!=nil) {
             
-            self.woeidsDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&err ];
+            self.woeidsDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error ];
             [self.woeidDatasArray addObject:self.woeidsDict];
             
-            completionBlock (self.woeidsDict, err);
+            completionBlock (self.woeidsDict, error);
         } else {
             
             completionBlock (self.woeidsDict, error);
@@ -61,6 +59,35 @@
     
     [data resume];
     
+}
+
+-(void) getDataTaskForUrl:(NSURL *)url withCompletionBlock:(void (^)(NSData * data , NSError * completionBlockError)) completionBlock {
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    NSURLSessionDataTask *data = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        if (data!=nil) {
+            
+                completionBlock (data, error);
+//            NSLog(@"image: %@",  [UIImage imageWithData: data]);
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                NSLog(@"LMDEBUG imageData 1 %@", [UIImage imageWithData: data]);
+//                UIImage *img = [UIImage imageWithImage:[UIImage imageWithData: data] convertToSize:CGSizeMake(50, 50)];
+//                cell.icon.image = img;
+//                [cell.icon sizeToFit];
+//
+//            });
+            
+        } else {
+            
+            completionBlock (data, error);
+
+        }
+    }];
+    [data resume];
+    
+
 }
 
 @end

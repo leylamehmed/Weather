@@ -13,11 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LMCityTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *cityName;
-@property (weak, nonatomic) IBOutlet UILabel *updatedTime;
+@property (weak, nonatomic) IBOutlet UILabel *weatherStateName;
 @property (weak, nonatomic) IBOutlet UILabel *maxTemp;
 @property (weak, nonatomic) IBOutlet UILabel *minTemp;
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
-
 //@property (nonatomic, strong) UILabel *cityName;// name of city
 
 //@property (nonatomic, strong) NSString *cityName; // name of city

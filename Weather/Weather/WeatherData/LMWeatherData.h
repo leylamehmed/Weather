@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL isDataFetched;
 
 -(void) fetchWoeidDataForWoeid:(NSString *)woeid withCompletionBlock:(void (^)(NSMutableDictionary * _Nonnull woeidsDict , NSError * _Nonnull completionBlockError)) completionBlock;
+
+-(void) getDataTaskForUrl:(NSURL *)url withCompletionBlock:(void (^)(NSData * data , NSError * completionBlockError)) completionBlock;
 @end
 
 NS_ASSUME_NONNULL_END

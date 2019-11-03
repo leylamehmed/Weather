@@ -10,6 +10,8 @@
 #import "LMCityTableViewCell.h"
 #import "LMWeatherData.h"
 #import "LMWeather.h"
+#import "NSNumber+LMNumber.h"
+#import "UIImage+LMImage.h"
 
 @interface LMCitiesViewController ()
 
@@ -28,15 +30,12 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     
-   _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     _tableView.autoresizesSubviews = true;
-//    _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//  self.view.autoresizesSubviews = true;
-    if([self.tableView respondsToSelector:@selector(setCellLayoutMarginsFollowReadableWidth:)]) {
-        self.tableView.cellLayoutMarginsFollowReadableWidth = YES;
-    }
     
-
+     [self setTableReload:false];
+    
+    _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
     _weatherData     = [LMWeatherData sharedInstance];
     _woeidsArray     = _weatherData.woeids;
 
@@ -72,10 +71,7 @@
         cell = [_tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     }
     cell.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-//    cell.contentView.backgroundColor = [UIColor redColor];
-//    cell.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-//    cell.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-
+    
     return cell;
 }
 
@@ -83,11 +79,52 @@
 -(void) tableView:(UITableView *)tableView willDisplayCell:(LMCityTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // load data from array
-    NSDictionary *dict = [_woidsData objectAtIndex:indexPath.row];
+    NSDictionary *dict = [self.woidsData objectAtIndexedSubscript:indexPath.row];
+    NSString *temperature = [NSString stringWithFormat:@"%@", @"\u00B0"];
+ 
+    NSString *cityNameStr = [NSString stringWithFormat: @"%@, %@", dict[@"title"], dict[@"parent"][@"title"]];
+    
+    NSString* maxTempStr = [NSString stringWithFormat:@"%@", dict[@"consolidated_weather"][0][@"max_temp"]];
+    NSString *maxTempRounded = [NSString stringWithFormat:@"max: %@ %@",  [NSNumber getRoundedNumber:[maxTempStr floatValue]], temperature];
+    
+    NSString* minTempStr = [NSString stringWithFormat:@"%@", dict[@"consolidated_weather"][0][@"min_temp"]];
+    NSString *minTempRounded = [NSString stringWithFormat:@"min: %@ %@",  [NSNumber getRoundedNumber:[minTempStr floatValue]], temperature];
+    
+    NSString *weatherStateNameStr = [NSString stringWithFormat: @"%@", dict[@"consolidated_weather"][0][@"weather_state_name"]];
 
-    cell.cityName.text = dict[@"title"];
+    NSString *weatherStateAbbrStr = [NSString stringWithFormat: @"%@", dict[@"consolidated_weather"][0][@"weather_state_abbr"]];
+
+    //Get/set weather image
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.metaweather.com/static/img/weather/ico/%@.ico",weatherStateAbbrStr]];
+    
+    [_weatherData getDataTaskForUrl:url withCompletionBlock:^(NSData * _Nonnull data, NSError * _Nonnull completionBlockError) {
+        if (!completionBlockError) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIImage *img = [UIImage imageWithImage:[UIImage imageWithData: data] convertToSize:CGSizeMake(50, 50)];
+                cell.icon.image = img;
+                [cell.icon sizeToFit];
+                
+            });
+            
+        }else{
+            NSLog(@"completionBlockError %@", completionBlockError.description);
+        }
+
+    }];
+    
+    cell.cityName.text = cityNameStr;
+    cell.maxTemp.text = maxTempRounded;
+    cell.minTemp.text = minTempRounded;
+    cell.weatherStateName.text = weatherStateNameStr;
+
+    
     [cell.cityName sizeToFit];
-
+    [cell.maxTemp sizeToFit];
+    [cell.minTemp sizeToFit];
+    [cell.weatherStateName sizeToFit];
+    
 }
 
 #pragma mark - UITableViewDelegate
@@ -105,7 +142,6 @@
 - (void) fetchData {
     //check isDataLoaded
     if ([_weatherData isDataFetched]) {
-        NSLog(@"LMDEBUG isDataFetched 1 -- %@ --", [_weatherData isDataFetched] ? @"Yes" : @"No");
         [self.tableView reloadData];
     } else {
         for (NSString *woeid in _woeidsArray) {
@@ -114,19 +150,33 @@
                 if (!completionBlockError) {
                     
                     //Check if all data are fetched
-                    if ((int)[self->_weatherData woeidDatasArray].count == (int) self->_woeidsArray.count ) {
+                    
+                    if ((int)[self->_weatherData woeidDatasArray].count == (int) self.weatherData.woeids.count ) {
                         
                         self.woidsData = [NSMutableArray arrayWithArray:[self->_weatherData woeidDatasArray]];
-                        
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            
-                            //set is data fetched property to true
-                            [self.weatherData setIsDataFetched:true];
-                            NSLog(@"LMDEBUG isDataFetched 2 -- %@ --", [self.weatherData isDataFetched] ? @"Yes" : @"No");
-                            
-                            // add tableview
-                            [self.view addSubview:self->_tableView];
-                        });
+                    
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                
+                                //set is data fetched property to true
+                                [self.weatherData setIsDataFetched:true];
+                                
+                                if (self.tableReload) {
+                                    //reload table
+                                    [self.tableView reloadData];
+        
+                                    //set table reload to false
+                                    [self setTableReload:false];
+        
+                                    //end refreshing
+                                    [self.refreshControl endRefreshing];
+                                    
+                                } else {
+                                    
+                                    // add tableview
+                                    [self.view addSubview:self->_tableView];
+                                }
+                                
+                            });
                     }
                     
                 }
@@ -145,7 +195,6 @@
     
     _refreshControl = [[UIRefreshControl alloc]init];
     [_refreshControl addTarget:self action:@selector(refreshTable) forControlEvents:UIControlEventValueChanged];
-    NSLog(@"LMDEBUG addRefreshControl " );
     if (@available(iOS 10.0, *)) {
         self.tableView.refreshControl = _refreshControl;
     } else {
@@ -153,16 +202,20 @@
     }
 }
 - (void)refreshTable {
-    NSLog(@"LMDEBUG refreshTable " );
-
+    NSMutableArray *arr = [[NSMutableArray alloc] init];
+    [_weatherData setWoeidDatasArray:arr];
+    
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [_weatherData setWoeidsDict:dict];
+    
+    [self setTableReload:true];
+    
     //set is data fetch to false
     [_weatherData setIsDataFetched:false];
     
     [self fetchData];
     
-    //end refreshing
-    [_refreshControl endRefreshing];
-
 }
+
 @end
 

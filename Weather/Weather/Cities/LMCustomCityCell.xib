@@ -19,14 +19,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qa1-cr-hzi">
-                        <rect key="frame" x="314" y="14" width="42" height="21"/>
+                        <rect key="frame" x="299" y="13" width="42" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.15672358870506287" green="0.40486672520637512" blue="0.69963067770004272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0V1-xf-4rX">
-                        <rect key="frame" x="314" y="49" width="42" height="21"/>
+                        <rect key="frame" x="299" y="47" width="42" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.15672358870506287" green="0.40486672520637512" blue="0.69963067770004272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -39,17 +39,17 @@
                         <color key="textColor" red="0.15672358870506287" green="0.40486672520637512" blue="0.69963067770004272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IZb-TO-yQB">
-                        <rect key="frame" x="12" y="5" width="78" height="69"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hfl-BT-9jg">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ya-cr-cnK">
                         <rect key="frame" x="98" y="47" width="48" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" red="0.24905955791473389" green="0.56232035160064697" blue="0.86545461416244507" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" red="0.24905955790000001" green="0.56232035160000005" blue="0.86545461420000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IZb-TO-yQB">
+                        <rect key="frame" x="28" y="14" width="50" height="50"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <connections>
@@ -57,7 +57,7 @@
                 <outlet property="icon" destination="IZb-TO-yQB" id="qdV-fn-2Oy"/>
                 <outlet property="maxTemp" destination="qa1-cr-hzi" id="Aki-rQ-ac7"/>
                 <outlet property="minTemp" destination="0V1-xf-4rX" id="Nbl-K5-da9"/>
-                <outlet property="updatedTime" destination="Hfl-BT-9jg" id="idC-lL-dku"/>
+                <outlet property="weatherStateName" destination="3Ya-cr-cnK" id="850-Hv-Nkv"/>
             </connections>
             <point key="canvasLocation" x="44.927536231884062" y="91.071428571428569"/>
         </tableViewCell>
