@@ -12,7 +12,7 @@
 #import "LMWeather.h"
 #import "NSNumber+LMNumber.h"
 #import "UIImage+LMImage.h"
-
+#import "LMDailyForecastViewController.h"
 @interface LMCitiesViewController ()
 
 @property LMWeatherData *weatherData;
@@ -26,7 +26,7 @@
     
     // init table view
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    _tableView.contentInset = UIEdgeInsetsMake(UIApplication.sharedApplication.statusBarFrame.size.height,0,0,0);
+    _tableView.contentInset = UIEdgeInsetsMake(0,0,0,0);
     _tableView.delegate = self;
     _tableView.dataSource = self;
     
@@ -132,6 +132,10 @@
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"selected %li row", (long)indexPath.row);
+    
+      LMDailyForecastViewController *dailyForecastVC = [[LMDailyForecastViewController alloc] init];
+    [self.navigationController pushViewController:dailyForecastVC animated:YES];\
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

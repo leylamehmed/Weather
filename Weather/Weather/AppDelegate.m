@@ -11,6 +11,7 @@
 #import "LMSettingsViewController.h"
 #import "LMCitiesViewController.h"
 #import "UIColor+LMColor.h"
+#import "LMMainViewController.h"
 
 @interface AppDelegate ()
 
@@ -29,7 +30,14 @@
         statusBar.backgroundColor = [UIColor getProjectColorDarkBlue];
         
     }
-
+    
+    LMMainViewController* mainVC = [[LMMainViewController alloc] init];
+    
+    mainVC.view.backgroundColor =[UIColor whiteColor];
+    
+    self.window.rootViewController = mainVC;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

@@ -10,7 +10,26 @@
 
 @implementation LMWeather
 
-//@synthesize cityName;
-//@synthesize imageFile;
++ (LMWeather *)sharedInstance {
+    static dispatch_once_t onceToken;
+    static LMWeather *instance = nil;
+    dispatch_once(&onceToken, ^{
+        instance = [[LMWeather alloc] init];
+    });
+    return instance;
+}
+- (instancetype) init
+{
+    self = [super init];
+    if (self)
+    {
+        
+    }
+    return self;
+}
+
+- (void) addProgrees {
+    
+}
 
 @end

@@ -69,16 +69,8 @@
         
         if (data!=nil) {
             
-                completionBlock (data, error);
-//            NSLog(@"image: %@",  [UIImage imageWithData: data]);
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                NSLog(@"LMDEBUG imageData 1 %@", [UIImage imageWithData: data]);
-//                UIImage *img = [UIImage imageWithImage:[UIImage imageWithData: data] convertToSize:CGSizeMake(50, 50)];
-//                cell.icon.image = img;
-//                [cell.icon sizeToFit];
-//
-//            });
-            
+            completionBlock (data, error);
+
         } else {
             
             completionBlock (data, error);
