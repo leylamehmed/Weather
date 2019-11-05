@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LMMainViewController : UIViewController<UIBarPositioningDelegate>
+@interface LMMainViewController : UIViewController <UIBarPositioningDelegate>
 
 + (LMMainViewController *)sharedInstance;
 - (instancetype) init;
@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) UINavigationBar* navBar;
 @property (strong, nonatomic) UIView * myView;
 @property (strong, nonatomic) UIWindow *window;
+
+-(void) setNavigationBar:(NSString *)title;
 
 @end
 

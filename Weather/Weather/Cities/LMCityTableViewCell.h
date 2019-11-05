@@ -17,11 +17,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *maxTemp;
 @property (weak, nonatomic) IBOutlet UILabel *minTemp;
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
-//@property (nonatomic, strong) UILabel *cityName;// name of city
-
-//@property (nonatomic, strong) NSString *cityName; // name of city
-//@property (nonatomic, strong) NSString *imageFile; // image filename of weather
-//
 
 @end
 

@@ -13,6 +13,9 @@
 #import "NSNumber+LMNumber.h"
 #import "UIImage+LMImage.h"
 #import "LMDailyForecastViewController.h"
+#import "UIColor+LMColor.h"
+#import "UIFont+LMSystemFontOverride.h"
+
 @interface LMCitiesViewController ()
 
 @property LMWeatherData *weatherData;
@@ -23,6 +26,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = @"Cities";
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self setNavigationBar];
     
     // init table view
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
@@ -80,6 +88,8 @@
     
     // load data from array
     NSDictionary *dict = [self.woidsData objectAtIndexedSubscript:indexPath.row];
+    
+    
     NSString *temperature = [NSString stringWithFormat:@"%@", @"\u00B0"];
  
     NSString *cityNameStr = [NSString stringWithFormat: @"%@, %@", dict[@"title"], dict[@"parent"][@"title"]];
@@ -132,10 +142,12 @@
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"selected %li row", (long)indexPath.row);
+
+    LMDailyForecastViewController *desc = [[LMDailyForecastViewController alloc]
+                                           initWithNibName:nil bundle:nil];
     
-      LMDailyForecastViewController *dailyForecastVC = [[LMDailyForecastViewController alloc] init];
-    [self.navigationController pushViewController:dailyForecastVC animated:YES];\
-    
+    [self.navigationController pushViewController:desc animated:YES];
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -219,6 +231,15 @@
     
     [self fetchData];
     
+}
+
+-(void) setNavigationBar {
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor getProjectColorDarkBlue];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.translucent = false;
+    
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
 }
 
 @end

@@ -42,21 +42,24 @@
     // Set setTabBar
     [self setTabBar];
 
-    //Set navigationBar
-    [self setNavigationBar];
-    
+////    //Set navigationBar
+////    [self setNavigationBar:@"Weather"];
+//    self.navigationController.navigationItem.title = @"Cities";
+////    self.navigationController.navigationBar.barTintColor = [UIColor getProjectColorDarkBlue];
+//    self.navigationController.navigationBar.barTintColor =[UIColor purpleColor];
 
 }
 
--(void) setNavigationBar {
+-(void) setNavigationBar:(NSString *)title {
 
+    self.navigationController.navigationItem.title = @"Cities";
     _navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 70)];
     _navBar.barTintColor = [UIColor getProjectColorDarkBlue];
     _navBar.tintColor = [UIColor whiteColor];
 
-    _navBar.translucent=false;
+    _navBar.translucent = false;
 
-    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:@"Weather"];
+    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:title];
 
     [_navBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName:[UIColor whiteColor],
@@ -65,7 +68,7 @@
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onTapAddButton:)];
     navItem.rightBarButtonItem = rightBarButton;
 
-    
+  //  self.navigationController.navigationBar.hidden = NO;
     [_navBar setItems:@[navItem]];
     [self.view addSubview:_navBar];
     
@@ -103,4 +106,6 @@
 -(void) onTapAddButton:(id)sender {
     NSLog(@"LM onTapRigtButton ");
 }
+
+
 @end

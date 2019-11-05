@@ -39,7 +39,8 @@
     
         LMCitiesViewController *homeViewController = [[LMCitiesViewController alloc] init];
         homeViewController.tabBarItem.title = @"Home";
-    
+        UINavigationController* citiesNavigationController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
+
         //    favoritesViewController.tabBarItem.image=[UIImage];
     
         LMSettingsViewController *settingsViewController = [[LMSettingsViewController alloc] init];
@@ -49,7 +50,7 @@
                                                         } forState:UIControlStateNormal];
     
         [viewControllersArray addObject:favoritesViewController];
-        [viewControllersArray addObject:homeViewController];
+        [viewControllersArray addObject:citiesNavigationController];
         [viewControllersArray addObject:settingsViewController];
     
         self.viewControllers = viewControllersArray;
@@ -79,7 +80,11 @@
     self.title = viewController.title;
     titleLabel.text = self.title;
 }
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = NO;
+}
 
 /*
 #pragma mark - Navigation

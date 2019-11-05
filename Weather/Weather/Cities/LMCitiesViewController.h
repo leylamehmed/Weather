@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LMMainViewController.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LMCitiesViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) NSMutableArray *woidsData;
 @property (strong, nonatomic) UITableView *tableView;
 @property BOOL tableReload;
+
+-(void) setNavigationBar;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -10,6 +10,8 @@
 
 @implementation LMWeather
 
+@synthesize cityName;
+
 + (LMWeather *)sharedInstance {
     static dispatch_once_t onceToken;
     static LMWeather *instance = nil;
@@ -23,7 +25,7 @@
     self = [super init];
     if (self)
     {
-        
+        self.cityName = cityName;
     }
     return self;
 }

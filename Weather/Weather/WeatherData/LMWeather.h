@@ -12,13 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LMWeather : NSObject
 
-//+ (LMWeather *)sharedInstance;
-//- (instancetype) init;
++ (LMWeather *)sharedInstance;
+- (instancetype) init;
+
+@property (nonatomic, strong) NSDictionary *selectedCityDict; 
+@property (nonatomic, strong) NSString *cityName; // name of city
+//@property (nonatomic, strong) UIImage *imageFile; // image filename of weather
 //
-//@property (nonatomic, strong) NSString *cityName; // name of city
-//@property (nonatomic, strong) NSString *imageFile; // image filename of weather
-
-
+//
 
 
 @end

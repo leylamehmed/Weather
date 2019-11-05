@@ -7,6 +7,7 @@
 //
 
 #import "LMDailyForecastViewController.h"
+#import "LMMainViewController.h"
 
 @interface LMDailyForecastViewController ()
 
@@ -28,10 +29,9 @@ static NSString * const reuseIdentifier = @"cellIdentifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   // self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-//    LMMainViewController *mainVC = [LMMainViewController sharedInstance];
-//    [mainVC setNavigationBar];
+    self.navigationItem.title = @"Your Title";
+
     UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc] init];
     _collectionView=[[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
     [_collectionView setDataSource:self];
@@ -42,8 +42,6 @@ static NSString * const reuseIdentifier = @"cellIdentifier";
     
     [self.view addSubview:_collectionView];
     
-    
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
