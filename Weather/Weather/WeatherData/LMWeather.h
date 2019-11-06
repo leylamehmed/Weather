@@ -40,7 +40,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *windSpeed;
 
 -(void) dataProcessing:(int)indexPathRow;
--(NSString *)getDateString:(NSString*) dateStr ;
+-(NSString *)getDateString:(NSString*) dateStr;
+-(NSString *)convertDate:(NSString *)strDate fromFormat:(NSString *)strFromFormat toFormat:(NSString *)strToFormat;
+-(NSString *)convertDateToString:(NSDate *)strDate toFormat:(NSString *)strToFormat;
+-(NSDate *)convertStringToDate:(NSString *)strDate fromFormat:(NSString *)strFromFormat;
+
 @end
 
 NS_ASSUME_NONNULL_END

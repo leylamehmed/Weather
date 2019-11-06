@@ -96,7 +96,7 @@
     } else if (tomorrow) {
         finalDateString = @"Tomorrow";
     } else {
-        [format setDateFormat:@"dd MMM yyyy"];
+        [format setDateFormat:@"E, d MMM yyyy"];
         finalDateString = [format stringFromDate:date];
     }
     
@@ -105,6 +105,28 @@
 }
 
 
+-(NSString *)convertDate:(NSString *)strDate fromFormat:(NSString *)strFromFormat toFormat:(NSString *)strToFormat
+{
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = strFromFormat;
+    NSDate *dtNew = [dateFormatter dateFromString:strDate];
+    dateFormatter.dateFormat = strToFormat;
+    return [dateFormatter stringFromDate:dtNew];
+}
 
+-(NSString *)convertDateToString:(NSDate *)strDate toFormat:(NSString *)strToFormat
+{
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = strToFormat;
+    return [NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:strDate]];
+}
+
+
+-(NSDate *)convertStringToDate:(NSString *)strDate fromFormat:(NSString *)strFromFormat
+{
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = strFromFormat;
+    return [dateFormatter dateFromString:strDate];
+}
 
 @end

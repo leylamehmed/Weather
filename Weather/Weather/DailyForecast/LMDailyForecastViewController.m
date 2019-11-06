@@ -88,8 +88,6 @@ static NSString * const reuseIdentifier = @"dailyForecastCell";
    NSString *dateString = [_weather getDateString:dict[@"applicable_date"]];
     cell.applicableDate.text = dateString;
     
-    
-    
     cell.minTemp.text = [NSString stringWithFormat:@"%@ / %@",  maxTempRounded, minTempRounded];
     cell.theTemp.text = theTempRounded;
     cell.weatherStateName.text = dict[@"weather_state_name"];
