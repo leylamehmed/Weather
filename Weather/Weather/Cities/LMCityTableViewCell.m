@@ -17,11 +17,9 @@
         self.cityName = [UILabel customInit];
         self.weatherStateName = [UILabel customInit];
         self.maxTemp = [UILabel customInit];
-        self.minTemp = [UILabel customInit];
         
         [self addSubview:self.cityName];
         [self addSubview:self.maxTemp];
-        [self addSubview:self.minTemp];
         [self addSubview:self.weatherStateName];
         [self addSubview:self.icon];
 

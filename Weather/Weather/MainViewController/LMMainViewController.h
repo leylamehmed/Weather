@@ -19,8 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) UIView * myView;
 @property (strong, nonatomic) UIWindow *window;
 
--(void) setNavigationBar:(NSString *)title;
-
 @end
 
 NS_ASSUME_NONNULL_END

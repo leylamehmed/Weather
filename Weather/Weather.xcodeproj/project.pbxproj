@@ -15,9 +15,11 @@
 		CF08CFF8236C3AEA00CBDECE /* LMCustomCityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF08CFF7236C3AEA00CBDECE /* LMCustomCityCell.xib */; };
 		CF08CFFC236DC81D00CBDECE /* LMMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF08CFFB236DC81D00CBDECE /* LMMainViewController.xib */; };
 		CF08CFFF236EFFA200CBDECE /* NSNumber+LMNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = CF08CFFE236EFFA200CBDECE /* NSNumber+LMNumber.m */; };
-		CF2ED29A237085D300927647 /* LMDailyForecastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2ED296237085D300927647 /* LMDailyForecastCell.m */; };
-		CF2ED29B237085D300927647 /* LMDailyForecastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF2ED297237085D300927647 /* LMDailyForecastCell.xib */; };
 		CF2ED29C237085D300927647 /* LMDailyForecastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2ED299237085D300927647 /* LMDailyForecastViewController.m */; };
+		CF2ED2A02371E11400927647 /* LMDailyForecastCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2ED29E2371E11400927647 /* LMDailyForecastCollectionViewCell.m */; };
+		CF2ED2A12371E11400927647 /* LMDailyForecastCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF2ED29F2371E11400927647 /* LMDailyForecastCollectionViewCell.xib */; };
+		CF2ED2AA23730A8A00927647 /* LMDetailedForecastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2ED2A823730A8A00927647 /* LMDetailedForecastViewController.m */; };
+		CF2ED2AB23730A8A00927647 /* LMDetailedForecastViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF2ED2A923730A8A00927647 /* LMDetailedForecastViewController.xib */; };
 		CF3DD385236F342400D633C0 /* UIImage+LMImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3DD384236F342400D633C0 /* UIImage+LMImage.m */; };
 		CF583A2E236883C3007576E9 /* LMCityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF583A2D236883C3007576E9 /* LMCityTableViewCell.m */; };
 		CF7844D72366FB61008D6225 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7844D62366FB61008D6225 /* AppDelegate.m */; };
@@ -66,11 +68,14 @@
 		CF08CFFB236DC81D00CBDECE /* LMMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMMainViewController.xib; sourceTree = "<group>"; };
 		CF08CFFD236EFFA200CBDECE /* NSNumber+LMNumber.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+LMNumber.h"; sourceTree = "<group>"; };
 		CF08CFFE236EFFA200CBDECE /* NSNumber+LMNumber.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+LMNumber.m"; sourceTree = "<group>"; };
-		CF2ED295237085D300927647 /* LMDailyForecastCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMDailyForecastCell.h; sourceTree = "<group>"; };
-		CF2ED296237085D300927647 /* LMDailyForecastCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMDailyForecastCell.m; sourceTree = "<group>"; };
-		CF2ED297237085D300927647 /* LMDailyForecastCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LMDailyForecastCell.xib; sourceTree = "<group>"; };
 		CF2ED298237085D300927647 /* LMDailyForecastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMDailyForecastViewController.h; sourceTree = "<group>"; };
 		CF2ED299237085D300927647 /* LMDailyForecastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMDailyForecastViewController.m; sourceTree = "<group>"; };
+		CF2ED29D2371E11400927647 /* LMDailyForecastCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMDailyForecastCollectionViewCell.h; sourceTree = "<group>"; };
+		CF2ED29E2371E11400927647 /* LMDailyForecastCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMDailyForecastCollectionViewCell.m; sourceTree = "<group>"; };
+		CF2ED29F2371E11400927647 /* LMDailyForecastCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMDailyForecastCollectionViewCell.xib; sourceTree = "<group>"; };
+		CF2ED2A723730A8A00927647 /* LMDetailedForecastViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMDetailedForecastViewController.h; sourceTree = "<group>"; };
+		CF2ED2A823730A8A00927647 /* LMDetailedForecastViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMDetailedForecastViewController.m; sourceTree = "<group>"; };
+		CF2ED2A923730A8A00927647 /* LMDetailedForecastViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMDetailedForecastViewController.xib; sourceTree = "<group>"; };
 		CF3DD383236F342400D633C0 /* UIImage+LMImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+LMImage.h"; sourceTree = "<group>"; };
 		CF3DD384236F342400D633C0 /* UIImage+LMImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LMImage.m"; sourceTree = "<group>"; };
 		CF583A2C236883C3007576E9 /* LMCityTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMCityTableViewCell.h; sourceTree = "<group>"; };
@@ -157,13 +162,23 @@
 		CF2ED294237085D300927647 /* DailyForecast */ = {
 			isa = PBXGroup;
 			children = (
-				CF2ED295237085D300927647 /* LMDailyForecastCell.h */,
-				CF2ED296237085D300927647 /* LMDailyForecastCell.m */,
-				CF2ED297237085D300927647 /* LMDailyForecastCell.xib */,
 				CF2ED298237085D300927647 /* LMDailyForecastViewController.h */,
 				CF2ED299237085D300927647 /* LMDailyForecastViewController.m */,
+				CF2ED29D2371E11400927647 /* LMDailyForecastCollectionViewCell.h */,
+				CF2ED29E2371E11400927647 /* LMDailyForecastCollectionViewCell.m */,
+				CF2ED29F2371E11400927647 /* LMDailyForecastCollectionViewCell.xib */,
 			);
 			path = DailyForecast;
+			sourceTree = "<group>";
+		};
+		CF2ED2A623730A4900927647 /* DetailedViewForecast */ = {
+			isa = PBXGroup;
+			children = (
+				CF2ED2A723730A8A00927647 /* LMDetailedForecastViewController.h */,
+				CF2ED2A823730A8A00927647 /* LMDetailedForecastViewController.m */,
+				CF2ED2A923730A8A00927647 /* LMDetailedForecastViewController.xib */,
+			);
+			path = DetailedViewForecast;
 			sourceTree = "<group>";
 		};
 		CF7844C92366FB61008D6225 = {
@@ -196,6 +211,7 @@
 				CF7845152366FE97008D6225 /* MainViewController */,
 				CF78450E2366FC1D008D6225 /* Cities */,
 				CF2ED294237085D300927647 /* DailyForecast */,
+				CF2ED2A623730A4900927647 /* DetailedViewForecast */,
 				CF78452323670582008D6225 /* Settings */,
 				CF78452223670570008D6225 /* Favorites */,
 				CF7844DB2366FB61008D6225 /* Main.storyboard */,
@@ -370,10 +386,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF2ED2A12371E11400927647 /* LMDailyForecastCollectionViewCell.xib in Resources */,
 				CF08CFFC236DC81D00CBDECE /* LMMainViewController.xib in Resources */,
 				CF7844E22366FB63008D6225 /* LaunchScreen.storyboard in Resources */,
 				CF7844DF2366FB63008D6225 /* Assets.xcassets in Resources */,
-				CF2ED29B237085D300927647 /* LMDailyForecastCell.xib in Resources */,
+				CF2ED2AB23730A8A00927647 /* LMDetailedForecastViewController.xib in Resources */,
 				CF08CFF8236C3AEA00CBDECE /* LMCustomCityCell.xib in Resources */,
 				CF7844DD2366FB61008D6225 /* Main.storyboard in Resources */,
 			);
@@ -403,11 +420,12 @@
 				CF78452623670744008D6225 /* LMCitiesViewController.m in Sources */,
 				CF08CFEF236B269B00CBDECE /* UIFont+LMSystemFontOverride.m in Sources */,
 				CF7844E52366FB63008D6225 /* main.m in Sources */,
-				CF2ED29A237085D300927647 /* LMDailyForecastCell.m in Sources */,
 				CF08CFEC236B22F100CBDECE /* UILabel+LMLabel.m in Sources */,
 				CF78452923671565008D6225 /* LMTabBarViewController.m in Sources */,
 				CF7845212367055C008D6225 /* LMSettingsViewController.m in Sources */,
+				CF2ED2AA23730A8A00927647 /* LMDetailedForecastViewController.m in Sources */,
 				CF78451E23670549008D6225 /* LMFavoritesViewController.m in Sources */,
+				CF2ED2A02371E11400927647 /* LMDailyForecastCollectionViewCell.m in Sources */,
 				CF583A2E236883C3007576E9 /* LMCityTableViewCell.m in Sources */,
 				CF08CFE52369CB5E00CBDECE /* LMWeatherData.m in Sources */,
 				CF7844D72366FB61008D6225 /* AppDelegate.m in Sources */,

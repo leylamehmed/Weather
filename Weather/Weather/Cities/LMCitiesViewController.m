@@ -19,6 +19,8 @@
 @interface LMCitiesViewController ()
 
 @property LMWeatherData *weatherData;
+@property LMWeather *weather;
+
 @property UIRefreshControl *refreshControl;
 @end
 
@@ -46,6 +48,8 @@
     
     _weatherData     = [LMWeatherData sharedInstance];
     _woeidsArray     = _weatherData.woeids;
+    _weather         = [LMWeather sharedInstance];
+
 
     [self addRefreshControl];
     [self fetchData];
@@ -87,26 +91,11 @@
 -(void) tableView:(UITableView *)tableView willDisplayCell:(LMCityTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // load data from array
-    NSDictionary *dict = [self.woidsData objectAtIndexedSubscript:indexPath.row];
+    _weather.dict = [self.woidsData objectAtIndexedSubscript:indexPath.row];
+    [_weather dataProcessing:(int)indexPath.row];
     
-    
-    NSString *temperature = [NSString stringWithFormat:@"%@", @"\u00B0"];
- 
-    NSString *cityNameStr = [NSString stringWithFormat: @"%@, %@", dict[@"title"], dict[@"parent"][@"title"]];
-    
-    NSString* maxTempStr = [NSString stringWithFormat:@"%@", dict[@"consolidated_weather"][0][@"max_temp"]];
-    NSString *maxTempRounded = [NSString stringWithFormat:@"max: %@ %@",  [NSNumber getRoundedNumber:[maxTempStr floatValue]], temperature];
-    
-    NSString* minTempStr = [NSString stringWithFormat:@"%@", dict[@"consolidated_weather"][0][@"min_temp"]];
-    NSString *minTempRounded = [NSString stringWithFormat:@"min: %@ %@",  [NSNumber getRoundedNumber:[minTempStr floatValue]], temperature];
-    
-    NSString *weatherStateNameStr = [NSString stringWithFormat: @"%@", dict[@"consolidated_weather"][0][@"weather_state_name"]];
-
-    NSString *weatherStateAbbrStr = [NSString stringWithFormat: @"%@", dict[@"consolidated_weather"][0][@"weather_state_abbr"]];
-
     //Get/set weather image
-    
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.metaweather.com/static/img/weather/ico/%@.ico",weatherStateAbbrStr]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.metaweather.com/static/img/weather/png/64/%@.png",_weather.weatherStateAbbr]];
     
     [_weatherData getDataTaskForUrl:url withCompletionBlock:^(NSData * _Nonnull data, NSError * _Nonnull completionBlockError) {
         if (!completionBlockError) {
@@ -121,33 +110,30 @@
         }else{
             NSLog(@"completionBlockError %@", completionBlockError.description);
         }
-
     }];
     
-    cell.cityName.text = cityNameStr;
-    cell.maxTemp.text = maxTempRounded;
-    cell.minTemp.text = minTempRounded;
-    cell.weatherStateName.text = weatherStateNameStr;
+    NSString *degreeSymbol = [NSString stringWithFormat:@"%@", @"\u00B0"];
+    
+    cell.cityName.text = [NSString stringWithFormat: @"%@, %@", _weather.cityName, _weather.parentLocationTitle];
+    cell.maxTemp.text = [NSString stringWithFormat:@"Max: %@ %@ / Min: %@ %@",  _weather.maxTemp, degreeSymbol, _weather.minTemp, degreeSymbol];
+    cell.theTemp.text = [NSString stringWithFormat:@"%@ %@", _weather.theTemp, degreeSymbol];
 
+    cell.weatherStateName.text = _weather.weatherStateName;
     
     [cell.cityName sizeToFit];
-    [cell.maxTemp sizeToFit];
-    [cell.minTemp sizeToFit];
     [cell.weatherStateName sizeToFit];
-    
 }
 
 #pragma mark - UITableViewDelegate
 // user tap the row
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"selected %li row", (long)indexPath.row);
+    [LMWeather sharedInstance].selectedCityDict = [self.woidsData objectAtIndexedSubscript:indexPath.row];
 
     LMDailyForecastViewController *desc = [[LMDailyForecastViewController alloc]
                                            initWithNibName:nil bundle:nil];
-    
-    [self.navigationController pushViewController:desc animated:YES];
 
+    [self.navigationController pushViewController:desc animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

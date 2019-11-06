@@ -50,48 +50,45 @@
 
 }
 
--(void) setNavigationBar:(NSString *)title {
-
-    self.navigationController.navigationItem.title = @"Cities";
-    _navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 70)];
-    _navBar.barTintColor = [UIColor getProjectColorDarkBlue];
-    _navBar.tintColor = [UIColor whiteColor];
-
-    _navBar.translucent = false;
-
-    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:title];
-
-    [_navBar setTitleTextAttributes:
-     @{NSForegroundColorAttributeName:[UIColor whiteColor],
-       NSFontAttributeName:[UIFont setFontWithSize:17.0f]}];
-
-    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onTapAddButton:)];
-    navItem.rightBarButtonItem = rightBarButton;
-
-  //  self.navigationController.navigationBar.hidden = NO;
-    [_navBar setItems:@[navItem]];
-    [self.view addSubview:_navBar];
-    
-    _navBar.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:_navBar];
-    if (@available(iOS 11, *)) {
-        UILayoutGuide * guide = self.view.safeAreaLayoutGuide;
-        [_navBar.leadingAnchor constraintEqualToAnchor:guide.leadingAnchor].active = YES;
-        [_navBar.trailingAnchor constraintEqualToAnchor:guide.trailingAnchor].active = YES;
-        [_navBar.topAnchor constraintEqualToAnchor:guide.topAnchor].active = YES;
-       // [_navBar.bottomAnchor constraintEqualToAnchor:guide.bottomAnchor].active = YES;
-    } else {
-        UILayoutGuide *margins = self.view.layoutMarginsGuide;
-        [_navBar.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
-        [_navBar.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
-        [_navBar.topAnchor constraintEqualToAnchor:self.topLayoutGuide.bottomAnchor].active = YES;
-//        [_navBar.bottomAnchor constraintEqualToAnchor:self.bottomLayoutGuide.topAnchor].active = YES;
-        
-    }
-    
-    [self.view layoutIfNeeded];
-    
-}
+//-(void) setNavigationBar:(NSString *)title {
+//
+//    self.navigationController.navigationItem.title = @"Cities";
+//    _navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 70)];
+//    _navBar.barTintColor = [UIColor getProjectColorDarkBlue];
+//    _navBar.tintColor = [UIColor whiteColor];
+//
+//    _navBar.translucent = false;
+//
+//    UINavigationItem *navItem = [[UINavigationItem alloc] initWithTitle:title];
+//
+//    [_navBar setTitleTextAttributes:
+//     @{NSForegroundColorAttributeName:[UIColor whiteColor],
+//       NSFontAttributeName:[UIFont setFontWithSize:17.0f]}];
+//
+//    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(onTapAddButton:)];
+//    navItem.rightBarButtonItem = rightBarButton;
+//
+//  //  self.navigationController.navigationBar.hidden = NO;
+//    [_navBar setItems:@[navItem]];
+//    [self.view addSubview:_navBar];
+//
+//    _navBar.translatesAutoresizingMaskIntoConstraints = NO;
+//    [self.view addSubview:_navBar];
+//    if (@available(iOS 11, *)) {
+//        UILayoutGuide * guide = self.view.safeAreaLayoutGuide;
+//        [_navBar.leadingAnchor constraintEqualToAnchor:guide.leadingAnchor].active = YES;
+//        [_navBar.trailingAnchor constraintEqualToAnchor:guide.trailingAnchor].active = YES;
+//        [_navBar.topAnchor constraintEqualToAnchor:guide.topAnchor].active = YES;
+//    } else {
+//        UILayoutGuide *margins = self.view.layoutMarginsGuide;
+//        [_navBar.leadingAnchor constraintEqualToAnchor:margins.leadingAnchor].active = YES;
+//        [_navBar.trailingAnchor constraintEqualToAnchor:margins.trailingAnchor].active = YES;
+//
+//    }
+//
+//    [self.view layoutIfNeeded];
+//
+//}
 
 -(void) setTabBar {
     
@@ -102,10 +99,10 @@
     [self addChildViewController:tabBarController];
 }
 
-
--(void) onTapAddButton:(id)sender {
-    NSLog(@"LM onTapRigtButton ");
-}
+//
+//-(void) onTapAddButton:(id)sender {
+//    NSLog(@"onTapRigtButton ");
+//}
 
 
 @end

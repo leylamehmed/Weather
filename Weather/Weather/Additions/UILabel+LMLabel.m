@@ -10,14 +10,14 @@
 #import "UIColor+LMColor.h"
 @implementation UILabel (LMLabel)
 
-+ (UILabel*) customInitWithCGRect : (CGRect) rect {
-
-    UILabel *label = [[UILabel alloc] initWithFrame:rect];
-    label.font = [UIFont fontWithName:@"Arial" size:14.0f];
-    label.textColor = [UIColor getProjectColorDarkBlue];
-    
-    return label;
-}
+//+ (UILabel*) customInitWithCGRect : (CGRect) rect {
+//
+//    UILabel *label = [[UILabel alloc] initWithFrame:rect];
+//    label.font = [UIFont fontWithName:@"Arial" size:14.0f];
+//    label.textColor = [UIColor getProjectColorDarkBlue];
+//    
+//    return label;
+//}
 + (UILabel*) customInit {
     
     UILabel *label = [[UILabel alloc] init];

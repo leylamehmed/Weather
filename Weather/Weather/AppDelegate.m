@@ -33,7 +33,11 @@
     
     mainVC.view.backgroundColor = [UIColor whiteColor];
     
-    self.window.rootViewController = mainVC;
+//    self.window.rootViewController = mainVC;
+    
+    [self.window.rootViewController presentViewController:mainVC
+                                                      animated:YES
+                                                    completion:NULL];
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -65,5 +69,9 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
+{
 
+    return YES;
+}
 @end

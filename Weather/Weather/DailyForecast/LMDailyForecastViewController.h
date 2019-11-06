@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LMMainViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -15,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 {
     UICollectionView *_collectionView;
 }
+
+@property NSArray *consolidatedWeatherArr;
 
 @end
 
