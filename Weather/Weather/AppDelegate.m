@@ -29,16 +29,7 @@
         statusBar.backgroundColor = [UIColor getProjectColorDarkBlue];
     }
     
-    LMMainViewController* mainVC = [[LMMainViewController alloc] init];
-    
-    mainVC.view.backgroundColor = [UIColor whiteColor];
-    
-//    self.window.rootViewController = mainVC;
-    
-    [self.window.rootViewController presentViewController:mainVC
-                                                      animated:YES
-                                                    completion:NULL];
-    [self.window makeKeyAndVisible];
+   [self.window makeKeyAndVisible];
     
     return YES;
 }

@@ -75,16 +75,14 @@ static NSString * const reuseIdentifier = @"dailyForecastCell";
     
     NSString *degreeSymbol = [NSString stringWithFormat:@"%@", @"\u00B0"];
     
-    NSString *maxTempRounded = [NSString stringWithFormat:@"Max: %@ %@",  [NSNumber getRoundedNumber:[dict[@"max_temp"] floatValue]], degreeSymbol];
+    NSString *maxTempRounded = [NSString stringWithFormat:@"Max: %@ %@C",  [NSNumber getRoundedNumber:[dict[@"max_temp"] floatValue]], degreeSymbol];
     
-    NSString *minTempRounded = [NSString stringWithFormat:@"Min: %@ %@",  [NSNumber getRoundedNumber:[dict[@"min_temp"] floatValue]], degreeSymbol];
+    NSString *minTempRounded = [NSString stringWithFormat:@"Min: %@ %@C",  [NSNumber getRoundedNumber:[dict[@"min_temp"] floatValue]], degreeSymbol];
     
-    NSString *theTempRounded = [NSString stringWithFormat:@"%@ %@",  [NSNumber getRoundedNumber:[dict[@"the_temp"] floatValue]], degreeSymbol];
+    NSString *theTempRounded = [NSString stringWithFormat:@"%@ %@C",  [NSNumber getRoundedNumber:[dict[@"the_temp"] floatValue]], degreeSymbol];
     
-     NSString *windSpeedRounded = [NSString stringWithFormat:@"Wind Speed: %@ ",  [NSNumber getRoundedNumber:[dict[@"wind_speed"] floatValue]]];
+     NSString *windSpeedRounded = [NSString stringWithFormat:@"Wind Speed: %@mph ",  [NSNumber getRoundedNumber:[dict[@"wind_speed"] floatValue]]];
 
-    
-    
    NSString *dateString = [_weather getDateString:dict[@"applicable_date"]];
     cell.applicableDate.text = dateString;
     
@@ -138,27 +136,5 @@ static NSString * const reuseIdentifier = @"dailyForecastCell";
     [self.view addSubview:_collectionView];
     
 }
-
-////Set Collection View Cell Size
-//-(CGSize) collectionView:(UICollectionView *) collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-//
-//
-//    //Set Landscape size of cells
-//    /*if(UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)){
-//     CGFloat cellWidth =  [[UIScreen mainScreen] bounds].size.width-360;
-//     CGFloat cellHeigt = [[UIScreen mainScreen] bounds].size.height-60;
-//     NSLog(@"Is Landscape");
-//     return CGSizeMake(cellWidth, cellHeigt);
-//     }
-//     //Set Potrait size of cells
-//     else{
-//     CGFloat cellWidth =  [[UIScreen mainScreen] bounds].size.width-60;
-//     CGFloat cellHeigt = [[UIScreen mainScreen] bounds].size.height-160;
-//     NSLog(@"Is Portrait");
-//     return CGSizeMake(cellWidth, cellHeigt);
-//     }*/
-//
-//   // return CGSizeMake(collectionView.bounds.size.width, collectionView.bounds.size.height);
-//}
 
 @end

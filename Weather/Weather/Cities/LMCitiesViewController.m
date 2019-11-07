@@ -115,8 +115,8 @@
     NSString *degreeSymbol = [NSString stringWithFormat:@"%@", @"\u00B0"];
     
     cell.cityName.text = [NSString stringWithFormat: @"%@, %@", _weather.cityName, _weather.parentLocationTitle];
-    cell.maxTemp.text = [NSString stringWithFormat:@"Max: %@ %@ / Min: %@ %@",  _weather.maxTemp, degreeSymbol, _weather.minTemp, degreeSymbol];
-    cell.theTemp.text = [NSString stringWithFormat:@"%@ %@", _weather.theTemp, degreeSymbol];
+    cell.maxTemp.text = [NSString stringWithFormat:@"Max: %@ %@C / Min: %@ %@ ",  _weather.maxTemp, degreeSymbol, _weather.minTemp, degreeSymbol];
+    cell.theTemp.text = [NSString stringWithFormat:@"%@ %@C", _weather.theTemp, degreeSymbol];
 
     cell.weatherStateName.text = _weather.weatherStateName;
     

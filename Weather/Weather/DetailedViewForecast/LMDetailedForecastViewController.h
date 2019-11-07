@@ -26,27 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *windSpeed;
 @property (weak, nonatomic) IBOutlet UILabel *humidity;
 @property (weak, nonatomic) IBOutlet UILabel *airPressure;
-
-
-//@property (nonatomic, strong) NSString *cityName;
-//@property (nonatomic, strong) NSString *parentLocationTitle;
-//@property (nonatomic, strong) NSString *maxTemp;
-//@property (nonatomic, strong) NSString *minTemp;
-//@property (nonatomic, strong) NSString *theTemp;
-//@property (nonatomic, strong) NSString *visibility;
-//@property (nonatomic, strong) NSString *weatherStateName;
-//@property (nonatomic, strong) NSString *weatherStateAbbr;
-//@property (nonatomic, strong) NSString *sunRise;
-//@property (nonatomic, strong) NSString *sunSet;
-//@property (nonatomic, strong) NSString *time;
-//@property (nonatomic, strong) NSString *timeZoneCity;
-//@property (nonatomic, strong) NSString *airPressure;
-//@property (nonatomic, strong) NSString *applicableDate;
-//@property (nonatomic, strong) NSString *created;
-//@property (nonatomic, strong) NSString *humidity;
-//@property (nonatomic, strong) NSString *windDirection;
-//@property (nonatomic, strong) NSString *windDirectionCompass;
-//@property (nonatomic, strong) NSString *windSpeed;
+@property (weak, nonatomic) IBOutlet UILabel *visibility;
+@property (weak, nonatomic) IBOutlet UILabel *confidence;
 
 @end
 
