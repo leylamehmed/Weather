@@ -27,7 +27,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *humidity;
 @property (weak, nonatomic) IBOutlet UILabel *airPressure;
 @property (weak, nonatomic) IBOutlet UILabel *visibility;
+
 @property (weak, nonatomic) IBOutlet UILabel *confidence;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+
 
 @end
 

@@ -101,7 +101,7 @@ static NSString * const reuseIdentifier = @"dailyForecastCell";
     _weather.selectedDayDict = [_consolidatedWeatherArr objectAtIndexedSubscript:indexPath.row];
     
     LMDetailedForecastViewController *detailedForecastVC = [[LMDetailedForecastViewController alloc]
-                                           initWithNibName:nil bundle:nil];
+                                           initWithNibName:@"LMDetailedForecastViewController" bundle:nil];
     
     [self.navigationController pushViewController:detailedForecastVC animated:YES];
     

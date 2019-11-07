@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+//    [self customInit];
     _weather = [LMWeather sharedInstance];
     _weatherData = [LMWeatherData sharedInstance];
     
@@ -34,54 +34,17 @@
     NSString *dateString = [_weather getDateString:_selectedDayDict[@"applicable_date"]];
     self.navigationItem.title = dateString;
     
-
+    //set title
     [self setContent];
-
-//    self.view.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self.view setNeedsLayout];
-//    [self.view sizeToFit];
-//
-//
-//    self.time.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self.time setNeedsLayout];
-//    [self.time sizeToFit];
-//
-//    self.sunrise.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self.sunrise setNeedsLayout];
-//    [self.sunrise sizeToFit];
-//
-//    self.sunset.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self.sunset setNeedsLayout];
-//    [self.sunset sizeToFit];
-//
-//    self.theTemp.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self.theTemp setNeedsLayout];
-//    [self.theTemp sizeToFit];
-//
-//    self.minMaxTemp.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self.minMaxTemp setNeedsLayout];
-//    [self.minMaxTemp sizeToFit];
-//
-//    self.weatherStateName.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self.weatherStateName setNeedsLayout];
-//    [self.weatherStateName sizeToFit];
-//
-//    self.windSpeed.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self.windSpeed setNeedsLayout];
-//    [self.windSpeed sizeToFit];
-//
-//    self.airPressure.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self.airPressure setNeedsLayout];
-//    [self.airPressure sizeToFit];
-//
-//    self.visibility.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self.visibility setNeedsLayout];
-//    [self.visibility sizeToFit];
-//
-//    self.confidence.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self.confidence setNeedsLayout];
-//    [self.confidence sizeToFit];
-
+    
+    // scrollview
+    self.scrollView.contentSize= CGSizeMake(self.view.frame.size.width,self.view.frame.size.height);
+    self.scrollView.contentInset = UIEdgeInsetsMake(0,0,0,0);
+    self.scrollView.autoresizesSubviews = true;
+    self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.scrollView setScrollEnabled:YES];
+    [self.view addSubview:self.scrollView];
+   
 }
 
 -(void) setContent {
@@ -141,9 +104,7 @@
     
 }
 
-+ (instancetype)instantiateFromNib {
-    return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self.class) owner:nil options:nil] firstObject];
-}
+
 
 
 @end
