@@ -10,7 +10,8 @@
 #import "LMFavoritesViewController.h"
 #import "LMSettingsViewController.h"
 #import "LMCitiesViewController.h"
-#import "UIFont+LMSystemFontOverride.h"
+#import "LMDetailedForecastViewController.h"
+#import "LMFavoritesViewController.h"
 
 @interface LMTabBarViewController ()
 
@@ -34,24 +35,29 @@
 
         NSMutableArray *viewControllersArray = [[NSMutableArray alloc] initWithCapacity:3];
     
-        LMFavoritesViewController *favoritesViewController = [[LMFavoritesViewController alloc] init];
-        favoritesViewController.tabBarItem.title= @"Favorites";
-    
+        LMDetailedForecastViewController *currentViewController = [[LMDetailedForecastViewController alloc] init];
+        currentViewController.tabBarItem.title= @"Location";
+        currentViewController.tabBarItem.image = [UIImage imageNamed:@"location"];
+            UINavigationController* currentNavViewController = [[UINavigationController alloc] initWithRootViewController:currentViewController];
+//
         LMCitiesViewController *homeViewController = [[LMCitiesViewController alloc] init];
         homeViewController.tabBarItem.title = @"Home";
+        homeViewController.tabBarItem.image = [UIImage imageNamed:@"home"];
         UINavigationController* citiesNavigationController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
-
-        //    favoritesViewController.tabBarItem.image=[UIImage];
     
         LMSettingsViewController *settingsViewController = [[LMSettingsViewController alloc] init];
         settingsViewController.tabBarItem.title = @"Settings";
+        settingsViewController.tabBarItem.image = [UIImage imageNamed:@"settings"];
+        UINavigationController* settingsNavViewController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+    
         [[UITabBarItem appearance] setTitleTextAttributes:@{
                                                         NSFontAttributeName:[UIFont setFontWithSize:12.0f]
                                                         } forState:UIControlStateNormal];
     
-        [viewControllersArray addObject:favoritesViewController];
+
+        [viewControllersArray addObject:currentNavViewController];
         [viewControllersArray addObject:citiesNavigationController];
-        [viewControllersArray addObject:settingsViewController];
+        [viewControllersArray addObject:settingsNavViewController];
     
         self.viewControllers = viewControllersArray;
         self.selectedIndex = 1;
@@ -73,12 +79,13 @@
 }
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
-    UILabel* titleLabel = (UILabel*)self.navigationItem.titleView ;
 
-    self.navigationItem.rightBarButtonItem = viewController.navigationItem.rightBarButtonItem;
-    self.navigationItem.backBarButtonItem = viewController.navigationItem.backBarButtonItem;
-    self.title = viewController.title;
-    titleLabel.text = self.title;
+    int  selectedTabInt = (int) self.selectedIndex;
+    if (selectedTabInt == 0) {
+      //  [[LMFavoritesViewController sharedInstance] getLocation];
+        NSLog(@"Custom location selected");
+
+    }
 }
 - (void)viewWillAppear:(BOOL)animated
 {

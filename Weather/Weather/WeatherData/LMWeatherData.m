@@ -65,7 +65,7 @@
     
     NSURLSession *session = [NSURLSession sharedSession];
     
-    NSURLSessionDataTask *data = [session dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    NSURLSessionDataTask *data = [session dataTaskWithURL:url completionHandler:^(NSData * data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         
         if (data!=nil) {
             

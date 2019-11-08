@@ -7,7 +7,6 @@
 //
 
 #import "LMWeather.h"
-#import "NSNumber+LMNumber.h"
 
 @implementation LMWeather
 
@@ -46,15 +45,15 @@
     
     NSString *maxTempStr = [NSString stringWithFormat:@"%@", dict[@"consolidated_weather"][indexPathRow][@"max_temp"]];
 
-    maxTemp = [NSString stringWithFormat:@"%@", [NSNumber getRoundedNumber:[maxTempStr floatValue]]];
+    maxTemp = [NSString stringWithFormat:@"%@", [NSNumber getRoundedNumber:[maxTempStr floatValue] withMaximumFractionDigits:0]];
     
     NSString *minTempStr = [NSString stringWithFormat:@"%@", dict[@"consolidated_weather"][indexPathRow][@"min_temp"]];
     
-    minTemp = [NSString stringWithFormat:@"%@", [NSNumber getRoundedNumber:[minTempStr floatValue]]];
+    minTemp = [NSString stringWithFormat:@"%@", [NSNumber getRoundedNumber:[minTempStr floatValue] withMaximumFractionDigits:0]];
     
     NSString *theTempStr = [NSString stringWithFormat:@"%@", dict[@"consolidated_weather"][indexPathRow][@"the_temp"]];
     
-    theTemp = [NSString stringWithFormat:@"%@", [NSNumber getRoundedNumber:[theTempStr floatValue]]];
+    theTemp = [NSString stringWithFormat:@"%@", [NSNumber getRoundedNumber:[theTempStr floatValue] withMaximumFractionDigits:0]];
     
     visibility = [NSString stringWithFormat:@"%@", dict[@"consolidated_weather"][indexPathRow][@"visibility"]];
     
@@ -76,7 +75,7 @@
     
     NSString *windSpeedStr = [NSString stringWithFormat:@"%@", dict[@"consolidated_weather"][indexPathRow][@"wind_speed"]];
     
-    windSpeed = [NSString stringWithFormat:@"%@", [NSNumber getRoundedNumber:[windSpeedStr floatValue]]];
+    windSpeed = [NSString stringWithFormat:@"%@", [NSNumber getRoundedNumber:[windSpeedStr floatValue] withMaximumFractionDigits:0]];
     
 }
 
@@ -105,18 +104,20 @@
 }
 
 
--(NSString *)convertDate:(NSString *)strDate fromFormat:(NSString *)strFromFormat toFormat:(NSString *)strToFormat
+-(NSString *)convertDate:(NSString *)strDate fromFormat:(NSString *)strFromFormat toFormat:(NSString *)strToFormat toTimeZone:(NSString*) timezoneName
 {
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = strFromFormat;
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:timezoneName]];
     NSDate *dtNew = [dateFormatter dateFromString:strDate];
     dateFormatter.dateFormat = strToFormat;
     return [dateFormatter stringFromDate:dtNew];
 }
 
--(NSString *)convertDateToString:(NSDate *)strDate toFormat:(NSString *)strToFormat
+-(NSString *)convertDateToString:(NSDate *)strDate toFormat:(NSString *)strToFormat toTimeZone:(NSString*) timezoneName
 {
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:timezoneName]];
     dateFormatter.dateFormat = strToFormat;
     return [NSString stringWithFormat:@"%@",[dateFormatter stringFromDate:strDate]];
 }

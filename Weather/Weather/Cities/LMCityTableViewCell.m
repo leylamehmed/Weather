@@ -7,7 +7,6 @@
 //
 
 #import "LMCityTableViewCell.h"
-#import "UILabel+LMLabel.h"
 
 @implementation LMCityTableViewCell
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

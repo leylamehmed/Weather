@@ -10,11 +10,8 @@
 #import "LMCityTableViewCell.h"
 #import "LMWeatherData.h"
 #import "LMWeather.h"
-#import "NSNumber+LMNumber.h"
-#import "UIImage+LMImage.h"
 #import "LMDailyForecastViewController.h"
-#import "UIColor+LMColor.h"
-#import "UIFont+LMSystemFontOverride.h"
+
 
 @interface LMCitiesViewController ()
 
@@ -53,6 +50,8 @@
 
     [self addRefreshControl];
     [self fetchData];
+    
+    
  
 }
 

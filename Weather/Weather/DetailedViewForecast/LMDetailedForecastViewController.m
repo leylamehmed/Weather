@@ -9,8 +9,6 @@
 #import "LMDetailedForecastViewController.h"
 #import "LMWeatherData.h"
 #import "LMWeather.h"
-#import "UIImage+LMImage.h"
-#import "NSNumber+LMNumber.h"
 
 @interface LMDetailedForecastViewController ()
 
@@ -23,7 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [self customInit];
     _weather = [LMWeather sharedInstance];
     _weatherData = [LMWeatherData sharedInstance];
     
@@ -33,6 +30,9 @@
     //Set title
     NSString *dateString = [_weather getDateString:_selectedDayDict[@"applicable_date"]];
     self.navigationItem.title = dateString;
+
+    //setNavBar
+    [self setNavigationBar];
     
     //set title
     [self setContent];
@@ -54,24 +54,26 @@
     NSString *fromFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ";
     NSString *toFormat = @"HH:mm a";
     
+    NSLog(@"_selectedCityDict %@ ", _selectedCityDict);
 
-    NSString *timeStr = [_weather convertDate:_selectedCityDict[@"time"] fromFormat:fromFormat toFormat:toFormat];
+    NSString *timeStr = [_weather convertDate:_selectedCityDict[@"time"] fromFormat:fromFormat toFormat:toFormat toTimeZone:_selectedCityDict[@"timezone"]];
 
-    NSString *sunriseStr = [_weather convertDate:_selectedCityDict[@"sun_rise"] fromFormat:fromFormat toFormat:toFormat];
+    NSString *sunriseStr = [_weather convertDate:_selectedCityDict[@"sun_rise"] fromFormat:fromFormat toFormat:toFormat toTimeZone:_selectedCityDict[@"timezone"]];
     
-    NSString *sunsetStr = [_weather convertDate:_selectedCityDict[@"sun_set"] fromFormat:fromFormat toFormat:toFormat];
+    NSString *sunsetStr = [_weather convertDate:_selectedCityDict[@"sun_set"] fromFormat:fromFormat toFormat:toFormat toTimeZone:_selectedCityDict[@"timezone"]];
+    
     
     NSString *degreeSymbol = [NSString stringWithFormat:@"%@", @"\u00B0"];
 
-    NSString *theTempRounded = [NSString stringWithFormat:@"%@ %@C",  [NSNumber getRoundedNumber:[_selectedDayDict[@"the_temp"] floatValue]], degreeSymbol];
+    NSString *theTempRounded = [NSString stringWithFormat:@"%@ %@C",  [NSNumber getRoundedNumber:[_selectedDayDict[@"the_temp"] floatValue] withMaximumFractionDigits:0], degreeSymbol];
     
-    NSString *maxTempRounded = [NSString stringWithFormat:@"Max: %@ %@",  [NSNumber getRoundedNumber:[_selectedDayDict[@"max_temp"] floatValue]], degreeSymbol];
+    NSString *maxTempRounded = [NSString stringWithFormat:@"Max: %@ %@",  [NSNumber getRoundedNumber:[_selectedDayDict[@"max_temp"] floatValue] withMaximumFractionDigits:0], degreeSymbol];
     
-    NSString *minTempRounded = [NSString stringWithFormat:@"Min: %@ %@",  [NSNumber getRoundedNumber:[_selectedDayDict[@"min_temp"] floatValue]], degreeSymbol];
+    NSString *minTempRounded = [NSString stringWithFormat:@"Min: %@ %@",  [NSNumber getRoundedNumber:[_selectedDayDict[@"min_temp"] floatValue] withMaximumFractionDigits:0], degreeSymbol];
     
-    NSString *windSpeedRounded = [NSString stringWithFormat:@"%@mph",  [NSNumber getRoundedNumber:[_selectedDayDict[@"wind_speed"] floatValue]]];
+    NSString *windSpeedRounded = [NSString stringWithFormat:@"%@mph",  [NSNumber getRoundedNumber:[_selectedDayDict[@"wind_speed"] floatValue] withMaximumFractionDigits:0]];
     
-    NSString *visibilityRounded = [NSString stringWithFormat:@"%@ miles",  [NSNumber getRoundedNumber:[_selectedDayDict[@"visibility"] floatValue]]];
+    NSString *visibilityRounded = [NSString stringWithFormat:@"%@ miles",  [NSNumber getRoundedNumber:[_selectedDayDict[@"visibility"] floatValue] withMaximumFractionDigits:1]];
     
     self.time.text    = [NSString stringWithFormat:@"Time: %@",  timeStr];
     self.sunrise.text = [NSString stringWithFormat:@"Sunrise: %@",  sunriseStr];
@@ -104,7 +106,12 @@
     
 }
 
-
-
-
+-(void) setNavigationBar {
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor getProjectColorDarkBlue];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.translucent = false;
+    
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+}
 @end

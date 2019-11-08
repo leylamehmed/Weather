@@ -41,8 +41,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void) dataProcessing:(int)indexPathRow;
 -(NSString *)getDateString:(NSString*) dateStr;
--(NSString *)convertDate:(NSString *)strDate fromFormat:(NSString *)strFromFormat toFormat:(NSString *)strToFormat;
--(NSString *)convertDateToString:(NSDate *)strDate toFormat:(NSString *)strToFormat;
+-(NSString *)convertDate:(NSString *)strDate fromFormat:(NSString *)strFromFormat toFormat:(NSString *)strToFormat toTimeZone:(NSString*) timezoneName;
+-(NSString *)convertDateToString:(NSDate *)strDate toFormat:(NSString *)strToFormat toTimeZone:(NSString*) timezoneName;
 -(NSDate *)convertStringToDate:(NSString *)strDate fromFormat:(NSString *)strFromFormat;
 
 @end

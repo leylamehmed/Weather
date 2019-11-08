@@ -10,11 +10,11 @@
 
 @implementation NSNumber (LMNumber)
 
-+ (NSNumber *) getRoundedNumber:(float) floatNumber {
++ (NSNumber *) getRoundedNumber:(float) floatNumber withMaximumFractionDigits:(int) maximumFractionDigit {
 
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setRoundingMode:NSNumberFormatterRoundHalfUp];
-    [formatter setMaximumFractionDigits:0];
+    [formatter setMaximumFractionDigits:maximumFractionDigit];
     NSNumber *roundedNumber = [formatter  stringFromNumber:[NSNumber numberWithFloat:floatNumber]];
     
     return roundedNumber;

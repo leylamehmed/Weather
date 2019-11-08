@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSNumber (LMNumber)
-+ (NSNumber *) getRoundedNumber:(float) floatNumber;
++ (NSNumber *) getRoundedNumber:(float) floatNumber withMaximumFractionDigits:(int)maximumFractionDigit;
 
 @end
 

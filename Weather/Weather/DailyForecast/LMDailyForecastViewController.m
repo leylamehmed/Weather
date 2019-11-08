@@ -9,10 +9,7 @@
 #import "LMDailyForecastViewController.h"
 #import "LMWeather.h"
 #import "LMDailyForecastCollectionViewCell.h"
-#import "UIColor+LMColor.h"
-#import "NSNumber+LMNumber.h"
 #import "LMWeatherData.h"
-#import "UIImage+LMImage.h"
 #import "LMDetailedForecastViewController.h"
 
 @interface LMDailyForecastViewController ()
@@ -75,13 +72,13 @@ static NSString * const reuseIdentifier = @"dailyForecastCell";
     
     NSString *degreeSymbol = [NSString stringWithFormat:@"%@", @"\u00B0"];
     
-    NSString *maxTempRounded = [NSString stringWithFormat:@"Max: %@ %@C",  [NSNumber getRoundedNumber:[dict[@"max_temp"] floatValue]], degreeSymbol];
+    NSString *maxTempRounded = [NSString stringWithFormat:@"Max: %@ %@C",  [NSNumber getRoundedNumber:[dict[@"max_temp"] floatValue]withMaximumFractionDigits:0], degreeSymbol];
     
-    NSString *minTempRounded = [NSString stringWithFormat:@"Min: %@ %@C",  [NSNumber getRoundedNumber:[dict[@"min_temp"] floatValue]], degreeSymbol];
+    NSString *minTempRounded = [NSString stringWithFormat:@"Min: %@ %@C",  [NSNumber getRoundedNumber:[dict[@"min_temp"] floatValue]withMaximumFractionDigits:0], degreeSymbol];
     
-    NSString *theTempRounded = [NSString stringWithFormat:@"%@ %@C",  [NSNumber getRoundedNumber:[dict[@"the_temp"] floatValue]], degreeSymbol];
+    NSString *theTempRounded = [NSString stringWithFormat:@"%@ %@C",  [NSNumber getRoundedNumber:[dict[@"the_temp"] floatValue]withMaximumFractionDigits:0], degreeSymbol];
     
-     NSString *windSpeedRounded = [NSString stringWithFormat:@"Wind Speed: %@mph ",  [NSNumber getRoundedNumber:[dict[@"wind_speed"] floatValue]]];
+     NSString *windSpeedRounded = [NSString stringWithFormat:@"Wind Speed: %@mph ",  [NSNumber getRoundedNumber:[dict[@"wind_speed"] floatValue]withMaximumFractionDigits:0]];
 
    NSString *dateString = [_weather getDateString:dict[@"applicable_date"]];
     cell.applicableDate.text = dateString;

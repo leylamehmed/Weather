@@ -7,11 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LMFavoritesViewController : UIViewController
+@interface LMFavoritesViewController : NSObject <CLLocationManagerDelegate> {
+    CLLocationManager *locationManager;
+    CLGeocoder *geocoder;
+    CLPlacemark *placemark;
+}
 
++ (LMFavoritesViewController *)sharedInstance;
+- (instancetype) init;
+-(void) getLocation;
 @end
 
 NS_ASSUME_NONNULL_END

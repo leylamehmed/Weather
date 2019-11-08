@@ -76,6 +76,7 @@
 		CF2ED2A723730A8A00927647 /* LMDetailedForecastViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMDetailedForecastViewController.h; sourceTree = "<group>"; };
 		CF2ED2A823730A8A00927647 /* LMDetailedForecastViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMDetailedForecastViewController.m; sourceTree = "<group>"; };
 		CF2ED2A923730A8A00927647 /* LMDetailedForecastViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMDetailedForecastViewController.xib; sourceTree = "<group>"; };
+		CF2ED2B523756FBD00927647 /* LMWeather-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LMWeather-PrefixHeader.pch"; sourceTree = SOURCE_ROOT; };
 		CF3DD383236F342400D633C0 /* UIImage+LMImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+LMImage.h"; sourceTree = "<group>"; };
 		CF3DD384236F342400D633C0 /* UIImage+LMImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LMImage.m"; sourceTree = "<group>"; };
 		CF583A2C236883C3007576E9 /* LMCityTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMCityTableViewCell.h; sourceTree = "<group>"; };
@@ -219,6 +220,7 @@
 				CF7844E02366FB63008D6225 /* LaunchScreen.storyboard */,
 				CF7844E32366FB63008D6225 /* Info.plist */,
 				CF7844E42366FB63008D6225 /* main.m */,
+				CF2ED2B523756FBD00927647 /* LMWeather-PrefixHeader.pch */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -607,6 +609,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2NYT8T448D;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/LMWeather-PrefixHeader.pch";
 				INFOPLIST_FILE = Weather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -624,6 +628,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2NYT8T448D;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/LMWeather-PrefixHeader.pch";
 				INFOPLIST_FILE = Weather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

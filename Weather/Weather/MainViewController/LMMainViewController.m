@@ -8,10 +8,7 @@
 
 #import "LMMainViewController.h"
 #import "LMTabBarViewController.h"
-#import "UILabel+LMLabel.h"
-#import "UIColor+LMColor.h"
-#import "UIFont+LMSystemFontOverride.h"
-
+#import "LMFavoritesViewController.h"
 @interface LMMainViewController ()
 
 @end
@@ -38,6 +35,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    [[LMFavoritesViewController sharedInstance] getLocation];
 
     // Set setTabBar
     [self setTabBar];

@@ -7,7 +7,6 @@
 //
 
 #import "LMDailyForecastCollectionViewCell.h"
-#import "UILabel+LMLabel.h"
 
 @implementation LMDailyForecastCollectionViewCell
 
