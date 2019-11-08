@@ -1,0 +1,22 @@
+//
+//  LMWeather-PrefixHeader.pch
+//  Weather
+//
+//  Created by LeyLa Mehmed on 8.11.19.
+//  Copyright © 2019 LM. All rights reserved.
+//
+
+#ifndef LMWeather_PrefixHeader_pch
+#define LMWeather_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "UIColor+LMColor.h"
+#import "NSNumber+LMNumber.h"
+#import "UILabel+LMLabel.h"
+#import "UIColor+LMColor.h"
+#import "UIFont+LMSystemFontOverride.h"
+#import "UIImage+LMImage.h"
+
+#endif /* LMWeather_PrefixHeader_pch */
