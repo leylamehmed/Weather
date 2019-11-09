@@ -15,9 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 + (LMWeather *)sharedInstance;
 - (instancetype) init;
 
-@property (nonatomic, strong) NSDictionary *selectedCityDict;
+@property BOOL isCurrentLocation;
+
 @property (nonatomic, strong) NSDictionary *dict;
+@property (nonatomic, strong) NSDictionary *selectedCityDict;
 @property (nonatomic, strong) NSDictionary *selectedDayDict;
+@property (nonatomic, strong) NSDictionary *currentCityDict;
+@property (nonatomic, strong) NSDictionary *currentDayDict;
 
 @property (nonatomic, strong) NSString *cityName;
 @property (nonatomic, strong) NSString *parentLocationTitle;

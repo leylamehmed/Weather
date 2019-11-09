@@ -21,12 +21,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     _weather = [LMWeather sharedInstance];
     _weatherData = [LMWeatherData sharedInstance];
     
-    _selectedCityDict = _weather.selectedCityDict;
-    _selectedDayDict  = _weather.selectedDayDict;
-
+    if (_weather.isCurrentLocation) {
+        _selectedCityDict = _weather.currentCityDict;
+        _selectedDayDict  = _weather.currentDayDict;
+    }else{
+        _selectedCityDict = _weather.selectedCityDict;
+        _selectedDayDict  = _weather.selectedDayDict;
+    }
     //Set title
     NSString *dateString = [_weather getDateString:_selectedDayDict[@"applicable_date"]];
     self.navigationItem.title = dateString;

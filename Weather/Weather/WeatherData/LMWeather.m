@@ -10,10 +10,9 @@
 
 @implementation LMWeather
 
-@synthesize cityName, parentLocationTitle, maxTemp, minTemp, theTemp, visibility, weatherStateName, weatherStateAbbr, sunRise, sunSet, time, timeZoneCity, airPressure, applicableDate, created, humidity, windDirection, windDirectionCompass, windSpeed;
+@synthesize cityName, parentLocationTitle, maxTemp, minTemp, theTemp, visibility, weatherStateName, weatherStateAbbr, sunRise, sunSet, time, timeZoneCity, airPressure, applicableDate, created, humidity, windDirection, windDirectionCompass, windSpeed, currentCityDict,currentDayDict;
 
 @synthesize selectedCityDict, selectedDayDict;
-;
 @synthesize dict;
 
 + (LMWeather *)sharedInstance {

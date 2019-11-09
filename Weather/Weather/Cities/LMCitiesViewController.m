@@ -39,14 +39,13 @@
     
     _tableView.autoresizesSubviews = true;
     
-     [self setTableReload:false];
+    [self setTableReload:false];
     
     _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     _weatherData     = [LMWeatherData sharedInstance];
     _woeidsArray     = _weatherData.woeids;
     _weather         = [LMWeather sharedInstance];
-
 
     [self addRefreshControl];
     [self fetchData];
@@ -151,7 +150,7 @@
                 if (!completionBlockError) {
                     
                     //Check if all data are fetched
-                    
+                    [self.weatherData.woeidDatasArray addObject:self.weatherData.woeidsDict];
                     if ((int)[self->_weatherData woeidDatasArray].count == (int) self.weatherData.woeids.count ) {
                         
                         self.woidsData = [NSMutableArray arrayWithArray:[self->_weatherData woeidDatasArray]];
@@ -203,6 +202,7 @@
     }
 }
 - (void)refreshTable {
+    
     NSMutableArray *arr = [[NSMutableArray alloc] init];
     [_weatherData setWoeidDatasArray:arr];
     

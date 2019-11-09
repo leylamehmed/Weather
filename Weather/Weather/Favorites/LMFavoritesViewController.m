@@ -56,30 +56,19 @@
 
     [geocoder reverseGeocodeLocation:[locations lastObject] completionHandler:^(NSArray *placemarks, NSError *error) {
         
-        
-        NSLog(@"didUpdateToLocation: %@", [locations lastObject] );
         CLLocation *currentLocation = [locations lastObject] ;
         
         if (currentLocation != nil) {
             
-            
             NSString *lang = [NSString stringWithFormat:@"%.6f", currentLocation.coordinate.longitude];
             NSString *lat =  [NSString stringWithFormat:@"%.6f", currentLocation.coordinate.latitude];
-            NSLog(@"Langitude: %@", lang );
-            NSLog(@"Latitude: %@", lat);
             
             CLPlacemark *placemark = [placemarks lastObject];
-            NSLog(@"placemark: %@", placemark );
-    
             NSString *city = placemark.locality;
-
-            NSLog(@"city: %@", city );
-
             
             //Get/set weather image
             NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.metaweather.com/api/location/search/?lattlong=%@,%@",lat,lang]];
             NSLog(@"urlurlurl: %@", url);
-
             
             [[LMWeatherData sharedInstance] getDataTaskForUrl:url withCompletionBlock:^(NSData * _Nonnull data, NSError * _Nonnull completionBlockError) {
                 if (!completionBlockError) {
@@ -98,17 +87,16 @@
                                 NSString *woeidString = [citydict valueForKey:@"woeid"];
                                 
                                 //Get data for this woeid
-
                                 
                                 [[LMWeatherData sharedInstance] fetchWoeidDataForWoeid:woeidString withCompletionBlock:^(NSMutableDictionary *woeidsDict, NSError *completionBlockError) {
                                     if (!completionBlockError) {
                                         
                                         //woeid data
-                                        NSLog(@"woeidsDictionary: %@", woeidsDict);
-                                        [[LMWeather sharedInstance] setSelectedCityDict:woeidsDict];
-                                        [[LMWeather sharedInstance] setSelectedDayDict:woeidsDict[@"consolidated_weather"][0]];
-                                        NSLog(@"selectedDayDict: %@", [LMWeather sharedInstance].selectedDayDict);
-    NSLog(@"selectedCityDict: %@", [LMWeather sharedInstance].selectedCityDict);
+                                        [[LMWeather sharedInstance] setCurrentCityDict:woeidsDict];
+                                        [[LMWeather sharedInstance] setCurrentDayDict:woeidsDict[@"consolidated_weather"][0]];
+                                        NSLog(@"selectedDayDict: %@", [LMWeather sharedInstance].currentDayDict);
+                                        NSLog(@"selectedCityDict: %@", [LMWeather sharedInstance].currentCityDict);
+                                    
                                     }
                                     else
                                     {
@@ -117,7 +105,6 @@
                                     }
                                     
                                 }];
-                                
                                 
                             }
 

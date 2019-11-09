@@ -12,6 +12,7 @@
 #import "LMCitiesViewController.h"
 #import "LMDetailedForecastViewController.h"
 #import "LMFavoritesViewController.h"
+#import "LMWeather.h"
 
 @interface LMTabBarViewController ()
 
@@ -39,7 +40,7 @@
         currentViewController.tabBarItem.title= @"Location";
         currentViewController.tabBarItem.image = [UIImage imageNamed:@"location"];
             UINavigationController* currentNavViewController = [[UINavigationController alloc] initWithRootViewController:currentViewController];
-//
+
         LMCitiesViewController *homeViewController = [[LMCitiesViewController alloc] init];
         homeViewController.tabBarItem.title = @"Home";
         homeViewController.tabBarItem.image = [UIImage imageNamed:@"home"];
@@ -54,7 +55,6 @@
                                                         NSFontAttributeName:[UIFont setFontWithSize:12.0f]
                                                         } forState:UIControlStateNormal];
     
-
         [viewControllersArray addObject:currentNavViewController];
         [viewControllersArray addObject:citiesNavigationController];
         [viewControllersArray addObject:settingsNavViewController];
@@ -62,7 +62,6 @@
         self.viewControllers = viewControllersArray;
         self.selectedIndex = 1;
     
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,9 +81,12 @@
 
     int  selectedTabInt = (int) self.selectedIndex;
     if (selectedTabInt == 0) {
-      //  [[LMFavoritesViewController sharedInstance] getLocation];
-        NSLog(@"Custom location selected");
+        
+        [[LMFavoritesViewController sharedInstance] getLocation];
+        [LMWeather sharedInstance].isCurrentLocation = YES;
 
+    }else{
+        [LMWeather sharedInstance].isCurrentLocation = NO;
     }
 }
 - (void)viewWillAppear:(BOOL)animated

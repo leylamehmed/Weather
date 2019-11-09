@@ -47,7 +47,7 @@
         if (data!=nil) {
             
             self.woeidsDict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error ];
-            [self.woeidDatasArray addObject:self.woeidsDict];
+//            [self.woeidDatasArray addObject:self.woeidsDict];
             
             completionBlock (self.woeidsDict, error);
         } else {

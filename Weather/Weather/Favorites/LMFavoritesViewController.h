@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
     CLLocationManager *locationManager;
     CLGeocoder *geocoder;
     CLPlacemark *placemark;
+    
 }
 
 + (LMFavoritesViewController *)sharedInstance;
