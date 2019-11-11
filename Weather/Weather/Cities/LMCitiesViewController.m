@@ -148,14 +148,9 @@
             
             [_weatherData fetchWoeidDataForWoeid:woeid withCompletionBlock:^(NSMutableDictionary *woeidsDict, NSError *completionBlockError) {
                 if (!completionBlockError) {
-                    
-                
-                   
+                                   
                     //Check if all data are fetched
                     [self.weatherData.woeidDatasArray addObject:self.weatherData.woeidsDict];
-                
-                    NSLog(@"(int)[self->_weatherData woeidDatasArray].count %d ",(int)[self->_weatherData woeidDatasArray].count);
-                    NSLog(@" (int) self.weatherData.woeids.count %d ", (int) self.weatherData.woeids.count);
                     
                     if ((int)[self->_weatherData woeidDatasArray].count == (int) self.weatherData.woeids.count ) {
                         
