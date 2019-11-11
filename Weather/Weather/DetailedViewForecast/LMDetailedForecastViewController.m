@@ -59,8 +59,6 @@
     NSString *fromFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ";
     NSString *toFormat = @"HH:mm a";
     
-    NSLog(@"_selectedCityDict %@ ", _selectedCityDict);
-
     NSString *timeStr = [_weather convertDate:_selectedCityDict[@"time"] fromFormat:fromFormat toFormat:toFormat toTimeZone:_selectedCityDict[@"timezone"]];
 
     NSString *sunriseStr = [_weather convertDate:_selectedCityDict[@"sun_rise"] fromFormat:fromFormat toFormat:toFormat toTimeZone:_selectedCityDict[@"timezone"]];

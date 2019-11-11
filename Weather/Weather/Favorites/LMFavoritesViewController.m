@@ -68,7 +68,6 @@
             
             //Get/set weather image
             NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.metaweather.com/api/location/search/?lattlong=%@,%@",lat,lang]];
-            NSLog(@"urlurlurl: %@", url);
             
             [[LMWeatherData sharedInstance] getDataTaskForUrl:url withCompletionBlock:^(NSData * _Nonnull data, NSError * _Nonnull completionBlockError) {
                 if (!completionBlockError) {
@@ -94,8 +93,6 @@
                                         //woeid data
                                         [[LMWeather sharedInstance] setCurrentCityDict:woeidsDict];
                                         [[LMWeather sharedInstance] setCurrentDayDict:woeidsDict[@"consolidated_weather"][0]];
-                                        NSLog(@"selectedDayDict: %@", [LMWeather sharedInstance].currentDayDict);
-                                        NSLog(@"selectedCityDict: %@", [LMWeather sharedInstance].currentCityDict);
                                     
                                     }
                                     else

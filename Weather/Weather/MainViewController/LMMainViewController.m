@@ -15,14 +15,14 @@
 
 @implementation LMMainViewController
 
-+ (LMMainViewController *)sharedInstance {
-    static dispatch_once_t onceToken;
-    static LMMainViewController *instance = nil;
-    dispatch_once(&onceToken, ^{
-        instance = [[LMMainViewController alloc] initWithNibName:@"LMMainViewController" bundle:nil];
-    });
-    return instance;
-}
+//+ (LMMainViewController *)sharedInstance {
+//    static dispatch_once_t onceToken;
+//    static LMMainViewController *instance = nil;
+//    dispatch_once(&onceToken, ^{
+//        instance = [[LMMainViewController alloc] initWithNibName:@"LMMainViewController" bundle:nil];
+//    });
+//    return instance;
+//}
 
 - (id)init {
     self = [super init];
@@ -49,7 +49,6 @@
 
     [self addChildViewController:tabBarController];
 }
-
 
 
 @end

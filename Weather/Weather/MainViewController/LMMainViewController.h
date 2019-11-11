@@ -18,7 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic) UINavigationBar* navBar;
 @property (strong, nonatomic) UIView * myView;
 @property (strong, nonatomic) UIWindow *window;
-
 @end
 
 NS_ASSUME_NONNULL_END

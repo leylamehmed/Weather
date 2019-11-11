@@ -20,6 +20,7 @@
 		CF2ED2A12371E11400927647 /* LMDailyForecastCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF2ED29F2371E11400927647 /* LMDailyForecastCollectionViewCell.xib */; };
 		CF2ED2AA23730A8A00927647 /* LMDetailedForecastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2ED2A823730A8A00927647 /* LMDetailedForecastViewController.m */; };
 		CF2ED2AB23730A8A00927647 /* LMDetailedForecastViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF2ED2A923730A8A00927647 /* LMDetailedForecastViewController.xib */; };
+		CF2ED2BC237957DC00927647 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2ED2BB237957DC00927647 /* Reachability.m */; };
 		CF3DD385236F342400D633C0 /* UIImage+LMImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3DD384236F342400D633C0 /* UIImage+LMImage.m */; };
 		CF583A2E236883C3007576E9 /* LMCityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CF583A2D236883C3007576E9 /* LMCityTableViewCell.m */; };
 		CF7844D72366FB61008D6225 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7844D62366FB61008D6225 /* AppDelegate.m */; };
@@ -77,6 +78,9 @@
 		CF2ED2A823730A8A00927647 /* LMDetailedForecastViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMDetailedForecastViewController.m; sourceTree = "<group>"; };
 		CF2ED2A923730A8A00927647 /* LMDetailedForecastViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LMDetailedForecastViewController.xib; sourceTree = "<group>"; };
 		CF2ED2B523756FBD00927647 /* LMWeather-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LMWeather-PrefixHeader.pch"; sourceTree = SOURCE_ROOT; };
+		CF2ED2B72379549F00927647 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		CF2ED2BA237957DC00927647 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		CF2ED2BB237957DC00927647 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		CF3DD383236F342400D633C0 /* UIImage+LMImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+LMImage.h"; sourceTree = "<group>"; };
 		CF3DD384236F342400D633C0 /* UIImage+LMImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LMImage.m"; sourceTree = "<group>"; };
 		CF583A2C236883C3007576E9 /* LMCityTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMCityTableViewCell.h; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 		CF08CFE22369CB3700CBDECE /* WeatherData */ = {
 			isa = PBXGroup;
 			children = (
+				CF2ED2B9237957DC00927647 /* NetworkConnection */,
 				CF08CFE32369CB5E00CBDECE /* LMWeatherData.h */,
 				CF08CFE42369CB5E00CBDECE /* LMWeatherData.m */,
 				CF08CFE6236AFF3900CBDECE /* LMWeather.h */,
@@ -182,6 +187,23 @@
 			path = DetailedViewForecast;
 			sourceTree = "<group>";
 		};
+		CF2ED2B62379549C00927647 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF2ED2B72379549F00927647 /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF2ED2B9237957DC00927647 /* NetworkConnection */ = {
+			isa = PBXGroup;
+			children = (
+				CF2ED2BA237957DC00927647 /* Reachability.h */,
+				CF2ED2BB237957DC00927647 /* Reachability.m */,
+			);
+			path = NetworkConnection;
+			sourceTree = "<group>";
+		};
 		CF7844C92366FB61008D6225 = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +211,7 @@
 				CF7844ED2366FB63008D6225 /* WeatherTests */,
 				CF7844F82366FB63008D6225 /* WeatherUITests */,
 				CF7844D32366FB61008D6225 /* Products */,
+				CF2ED2B62379549C00927647 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -429,6 +452,7 @@
 				CF78451E23670549008D6225 /* LMFavoritesViewController.m in Sources */,
 				CF2ED2A02371E11400927647 /* LMDailyForecastCollectionViewCell.m in Sources */,
 				CF583A2E236883C3007576E9 /* LMCityTableViewCell.m in Sources */,
+				CF2ED2BC237957DC00927647 /* Reachability.m in Sources */,
 				CF08CFE52369CB5E00CBDECE /* LMWeatherData.m in Sources */,
 				CF7844D72366FB61008D6225 /* AppDelegate.m in Sources */,
 				CF2ED29C237085D300927647 /* LMDailyForecastViewController.m in Sources */,

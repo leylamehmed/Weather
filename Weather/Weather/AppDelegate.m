@@ -28,10 +28,14 @@
     if ([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
         statusBar.backgroundColor = [UIColor getProjectColorDarkBlue];
     }
-    
+
    [self.window makeKeyAndVisible];
     
     return YES;
+}
+- (void)resetAppToFirstController
+{
+    self.window.rootViewController =   [[LMMainViewController alloc] init];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
